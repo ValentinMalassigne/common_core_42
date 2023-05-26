@@ -1,0 +1,377 @@
+# Born2beroot
+## _An Introduction to virtualisation_
+
+The goal of this project is to create a machine in VirtualBox. Then setup an operating systems with strict rules on passwords, connections, ...
+
+This documents lists the steps I followed to create my machine and to finish the project with the bonuses (125/100).
+
+### Setup VirtualBox
+- TO DO
+
+### Install Debian
+- TO DO
+
+### Configure the server
+
+##### The basics
+- Log in root user
+```
+su -
+```
+
+- Update packages
+```
+apt-get update
+```
+
+- Install sudo
+```
+apt install sud
+```
+
+- Add a user to the sudo group
+```
+sudo usermod -a -G sudo vmalassi
+```
+
+- Check that a user is in the sudo group
+```
+getent group sudo
+```
+
+- Give the right to use sudo to a user
+```
+sudo visudo
+```
+add the following line
+`vmalassi    ALL=(ALL)ALL`
+
+##### Configurations for sudo
+
+- Create a config file 
+```
+touch /etc/sudoers.d/sudo_config
+```
+- Create a folder for the logs 
+```
+mkdir /var/log/sudo
+```
+- Edit the soduers config file
+```
+nano /etc/sudoers.d/sudo_config
+```
+Inside the file write :
+> Defaults    passwd_tries=3
+Defaults    badpass_message="<custom-error-message>"
+Defaults    logfile="/var/log/sudo/<filename>"
+Defaults	log_input,log_output
+Defaults    requiretty
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/
+usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+##### Installing and seting up SSH
+- Install the SSH server
+```
+sudo apt install openssh-server
+```
+- Check the status of the server
+```
+sudo service ssh status
+```
+- Edit the SSH config file
+```
+sudo nano /etc/ssh/sshd_config
+```
+Replace `#Port 22` with `Port 4242`
+Replace `#PermitRootLogin prohibit-password` with `PermitRootLogin no`
+- Reboot the SSH service
+```
+sudo service ssh restart
+```
+- Check if the port of the SSH connection has changed
+```
+sudo service ssh status
+```
+##### Instaling and setting up UFW
+- Install UFW
+```
+sudo apt install ufw
+```
+- Check if UFW is correctly installed 
+```
+dpkg -l | grep ufw
+```
+- Activate UFW
+```
+sudo ufw enable
+```
+- Authorize connections on port 4242
+```
+sudo ufw allow 4242
+```
+- Get UFW status
+```
+sudo ufw status
+```
+You can get the rules number by adding `numbered` to the previous command.
+- Delete a rule
+```
+sudo ufw delete [rule number]
+```
+
+##### Connect to the serve with SSH
+- Virtual Box settings 
+-- Go to your machine settings and then to Network
+For `Attached to` switch from NAt to Bridged Adapter
+-- Click `Advanced` change Promiscuous ode to Allow All
+
+- Restart your machine
+```
+sudo reboot
+```
+- Get the server IP
+```
+hostname -I
+```
+- Connect to the server from a terminal on the host machine
+```
+ssh [user]@p[ip] -p 4242
+```
+
+##### Setup the password policy
+- Change the duration policy
+```
+sudo nano /etc/login.defs
+```
+Change `PASS_MAX_DAYS` to 30
+Change `PASS_MIN_DAYS` to 2
+
+- Change the policy for already created users
+```
+sudo chage -M 30 vmalassi
+sudo chage -m 2 vmalassi
+sudo chage -W 7 vmalassi
+
+sudo chage -M 30 root
+sudo chage -m 2 root
+sudo chage -W 7 root
+```
+- Check if the policy was correctly updated
+```
+sudo chage -l [user]
+```
+- To change the quality policy download the libpam-pwqualty package
+```
+sudo apt instal libpam-pwquality
+```
+- Check if the package is correctly installed
+```
+dpkg -l | grep libpam-pwquality
+```
+- Change the password rules
+```
+sudo nano /etc/pam.d/common-password
+```
+Complete this the following line
+`password requisite pam_pwquality.so ...`
+to 
+`password requisite pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
+
+##### Creating users and groups
+- Create a group
+```
+sudo groupadd [groupName]
+```
+- Create a user
+```
+sudo adduser [userName]
+```
+- Add a user to a group
+```
+sudo adduser [userName] [groupName]
+```
+- List the groups of a user
+```
+groups [userName]
+```
+- List all groups
+```
+gettent group
+```
+##### Change the hostname
+- Display the hostname
+```
+hostname
+```
+- Change the hostname in the following files
+```
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+```
+- Reboot the VM
+```
+sudo reboot
+```
+##### Monitoring Script
+ - Check the monitoring script in the repo
+
+##### Cron job
+- Configure the crontab file
+```
+sudo crontab -u root -e
+```
+Add the following line at the end of file
+`*/10 * * * * sh [script_path]`
+
+
+### Bonuses
+
+#### WordPress
+- Install Lighttpd
+```
+sudo apt install lighttpd
+```
+- Allow connections on the 80 port
+```
+sudo ufw allow 80
+```
+- Instll wget and zip
+```
+sudo apt install wget zip
+```
+- Get to /var/www/
+```
+cd /var/www/
+```
+- Install WordPress
+```
+sudo wget https://wordpress.org/latest.zip
+```
+- Unzip WordPress
+```
+sudo unzip latest.zip
+```
+- Rename the html file to html_old
+```
+sudo mv html/ html_old/
+```
+- Rename WordPress
+```
+sudo mv wordpress/ html
+```
+- Give the necessary rights on html
+```
+sudo chmod -R 755 html
+```
+
+##### MariaDB
+- Installing MariaDB
+```
+sudo apt install mariadb-server
+```
+- Make MariaDB safe
+```
+sudo mysql_secure_installation
+```
+> Switch to unix_socket autentication? → N
+Change the root password? → N
+Remove anonymous users? → Y
+Disallow root login remotely? → Y
+Remove test database and acces to it? → Y
+Reaload privilege tables now? → Y
+
+- Access to mariadb
+```
+mariadb
+```
+You are now sending SQL requests and not UNIX command anymore
+- Create a database for WordPress
+```
+CREATE DATABASE wp_database;
+```
+- Get the database list
+```
+SHOW DATABASES;
+```
+- Add a user
+```
+CREATE USER 'vmalassi'@'localhost' IDENTIFIED BY '1234';
+```
+- Give the right on the WordPress database to the new user
+```
+GRANT ALL PRIVILEGES ON wp_database.* TO 'vmalassi'@'localhost';
+```
+- Update the permissions
+```
+FLUSH PRIVILEGES;
+```
+- Exit MariaDB
+```
+exit
+```
+
+##### Setup WordPress
+
+- Instal php
+```
+sudo apt install php-cgi php-mysql
+```
+- Get to /var/www/html
+```
+cd /var/www/html
+```
+- Create a copy of wp-config-sample.php
+```
+cp wp-config-sample.php wp-config.php
+```
+- Edit the configuration
+```
+nano wp-config.php
+```
+- Replace the values of DB_NAME, DB_USER AND DB_PASSWORD
+
+> DB_NAME → wp_database
+DB_USER → vmalassi 
+DB_PASSWORD → 1234
+
+You can now access your WordPress website through your browser, using the same IP you use to connect via SSH
+
+#### Second Bonus : Minecraft
+
+###### Install Java
+- Install the version 17 of the JDE without graphical interface
+```
+sudo apt install openjdk-17-jre-headless
+```
+- Create a minecraft repository
+```
+mkdir /opt/minecraft
+```
+- Enter the directory
+```
+cd /opt/minecraft
+```
+- Download the .jar archive corresponding to the minecraft version you want
+```
+wget https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar
+```
+- Initialize the server
+```
+java -jar server.jar nogui
+```
+- Accept the eula
+```
+nano eula.txt
+```
+Replace `false` by `true`
+- Start the server
+```
+sudo java -Xmx1024M -Xms1024M -jar server.jar nogui
+```
+- Open the port 25565
+```
+sudo ufw allow 25565
+```
+- Join the minecraft server with the same IP you used for WordPress or SSH
+
+If you liked this tutorial feel free to star my repo and follow my github :)

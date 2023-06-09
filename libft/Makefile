@@ -61,7 +61,7 @@ BONUS_SOURCES = ft_lstnew.c \
 
 BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
 
-OBJECTS = $(SOURCES:.c=.o)
+OBJECTS = $(addsuffix .o, $(SOURCES))
 
 INCLUDE = libft.h
 

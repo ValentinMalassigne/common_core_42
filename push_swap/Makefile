@@ -6,7 +6,7 @@
 #    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 11:18:33 by vmalassi          #+#    #+#              #
-#    Updated: 2023/05/31 10:03:49 by vmalassi         ###   ########.fr        #
+#    Updated: 2023/06/09 13:22:11 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC_FILES = push_swap \
 			input_checker \
-			manage_sorting \
+			manage_sort \
 			ft_swap \
 			ft_push \
 			ft_rotate \
 			ft_reverse_rotate \
+			utils \
+			apply_instructions \
+			find_value_place \
+			get_lowest_rotations \
+			manage_init \
+			sort_3_nodes_stack \
+			utils_for_a_to_b \
+			utils_for_b_to_a \
 
 OBJ_DIR = obj/
+SRC_DIR = sources/
 
-SRC = $(addsuffix .c, $(SRC_FILES))
+SRC = $(addprefix $(OBJ_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 INCLUDE = $(LIBFT)/libft.h

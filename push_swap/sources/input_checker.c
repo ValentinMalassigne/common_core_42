@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:51:48 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/05/24 10:38:23 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:33:14 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ long	ft_atol(const char *nptr);
 int		ft_is_larger_than_int(char *str);
 int		ft_found_a_duplicate(char **argv, int start, int length);
 
-int	input_is_correct(int argc, char **argv)
+int	input_is_correct(int argc, char **argv, int start_index)
 {
 	int	i;
 
-	i = 1;
+	i = start_index;
 	while (i < argc)
 	{
 		if (!ft_is_number(argv[i]) || ft_is_larger_than_int(argv[i])

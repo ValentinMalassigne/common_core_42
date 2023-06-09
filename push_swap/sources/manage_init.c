@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_sorting.c                                   :+:      :+:    :+:   */
+/*   manage_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:41:36 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/05/31 11:12:01 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:34:20 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static t_list	*init_list(int argc, char **argv);
-void			ft_free_content(void *content);
-
-t_list	*manage_sorting(int argc, char **argv)
-{
-	t_list	*list_a;
-
-	list_a = init_list(argc, argv);
-	if (!list_a)
-		return (NULL);
-	//sort it
-	return (list_a);
-}
 
 static int	*init_content(char *str)
 {
@@ -37,14 +23,14 @@ static int	*init_content(char *str)
 	return (value);
 }
 
-static t_list	*init_list(int argc, char **argv)
+static t_list	*init_list(int argc, char **argv, int start_index)
 {
 	t_list	*res;
 	t_list	*new_node;
 	int		i;
 	int		*value;
 
-	i = 1;
+	i = start_index;
 	res = NULL;
 	while (i < argc)
 	{
@@ -64,4 +50,35 @@ static t_list	*init_list(int argc, char **argv)
 		i++;
 	}
 	return (res);
+}
+
+t_list	*manage_quote_input(char **argv)
+{
+	char	**splited;
+	int		arg_count;
+
+	arg_count = 0;
+	splited = ft_split(argv[1], ' ');
+	while (splited[arg_count])
+		arg_count++;
+	if (!input_is_correct(arg_count, splited, 0))
+			return (NULL);
+	return (init_list(arg_count, splited, 0));
+}
+
+t_list	*manage_init(int argc, char **argv)
+{
+	t_list	*list_a;
+
+	if (argc == 2)
+	{
+		return (manage_quote_input(argv));
+	}
+	else
+	{
+		if (!input_is_correct(argc, argv, 1))
+			return (NULL);
+		list_a = init_list(argc, argv, 1);
+	}
+	return (list_a);
 }

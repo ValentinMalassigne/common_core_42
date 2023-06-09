@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:18:38 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/05/31 11:04:48 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:06:08 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,19 @@ void	ft_putlist(t_list *list);
 
 int	main(int argc, char **argv)
 {
-	t_list	*sorted_list;
+	t_list	*list;
 
 	if (argc < 2)
 		return (0);
-	if (!input_is_correct(argc, argv))
+	list = manage_init(argc, argv);
+	if (!list)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	sorted_list = manage_sorting(argc, argv);
-	if (!sorted_list)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	ft_putlist(sorted_list);
-	ft_lstclear(&sorted_list, free);
+	if (!is_ascending(list))
+		sort_any(&list);
+	ft_lstclear(&list, free);
 	return (0);
 }
 

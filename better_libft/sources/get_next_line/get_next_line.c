@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:59:22 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 17:28:18 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:30:22 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*read_until_line(int fd, char *read_output)
 			return (NULL);
 		}
 		buffer[bytes_read] = 0;
-		read_output = ft_strjoin(read_output, buffer);
+		read_output = ft_strjoin_gnl(read_output, buffer);
 	}
 	free(buffer);
 	return (read_output);

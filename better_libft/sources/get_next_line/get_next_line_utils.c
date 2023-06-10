@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:04:35 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 17:28:21 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:30:12 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strchr(const char *s, int c)
 	return (res);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin_gnl(char *s1, const char *s2)
 {
 	char	*res;
 	size_t	i;

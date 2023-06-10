@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:02:45 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:17:50 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 static void	reduce_a_to_size_3(t_list **stack_a, t_list **stack_b)
 {

@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:41:36 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:34:20 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:23:19 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 static int	*init_content(char *str)
 {
@@ -52,8 +52,16 @@ static t_list	*init_list(int argc, char **argv, int start_index)
 	return (res);
 }
 
+static void	free_double_array(int length, char **array)
+{
+	while (length-- > 0)
+		free(array[length]);
+	free(array);
+}
+
 t_list	*manage_quote_input(char **argv)
 {
+	t_list	*res;
 	char	**splited;
 	int		arg_count;
 
@@ -62,8 +70,13 @@ t_list	*manage_quote_input(char **argv)
 	while (splited[arg_count])
 		arg_count++;
 	if (!input_is_correct(arg_count, splited, 0))
-			return (NULL);
-	return (init_list(arg_count, splited, 0));
+	{
+		free_double_array(arg_count, splited);
+		return (NULL);
+	}
+	res = init_list(arg_count, splited, 0);
+	free_double_array(arg_count, splited);
+	return (res);
 }
 
 t_list	*manage_init(int argc, char **argv)

@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 08:51:48 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:33:14 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 int		ft_is_number(char *str);
 long	ft_atol(const char *nptr);

@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 08:23:36 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/08 15:49:38 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 static void	ft_push_1_to_2(t_list **stack1, t_list **stack2)
 {

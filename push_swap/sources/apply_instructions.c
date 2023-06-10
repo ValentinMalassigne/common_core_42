@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:47:20 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:20:13 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 int	apply_rarb(t_list **stack_a, t_list **stack_b, int value, char c)
 {

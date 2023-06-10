@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:41:03 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:11:01 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 int	is_ascending(t_list *list)
 {

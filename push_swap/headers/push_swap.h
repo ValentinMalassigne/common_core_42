@@ -6,24 +6,13 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:45:34 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:33:51 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:25:41 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-//includes to remove :
-# include <stdio.h>
-
-/*les solutions :
-	la t_list : pb il faut lui donner des pointeurs comme content
-	faire une structure avec un tableau d'int et une size
-	faire une structure avec data et next et une structure avec size et head
-*/
+# include "../libft/headers/libft.h"
 
 t_list	*manage_init(int argc, char **argv);
 void	ft_sa(t_list *stack);

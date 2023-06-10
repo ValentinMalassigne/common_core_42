@@ -6,13 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:18:38 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 14:06:08 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:55:49 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	ft_putlist(t_list *list);
+#include "../headers/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -32,6 +30,8 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/*
+#include <stdio.h>
 void	ft_putlist(t_list *list)
 {
 	t_list	*current;
@@ -44,4 +44,4 @@ void	ft_putlist(t_list *list)
 		printf("%d\n", *value);
 		current = current->next;
 	}
-}
+}*/

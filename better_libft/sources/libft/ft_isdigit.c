@@ -6,10 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:29:03 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 17:06:11 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:24:03 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../headers/libft.h"
 
 int	ft_isdigit(int c)
 {

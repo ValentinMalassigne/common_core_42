@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:31:06 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:37:20 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,24 @@ static void	ft_reverse_rotate_stack(t_list **stack)
 	ft_lstadd_front(stack, temp);
 }
 
-void	ft_rra(t_list **stack)
+void	ft_rra(t_list **stack, int silent)
 {
 	ft_reverse_rotate_stack(stack);
-	ft_putstr_fd("rra\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("rra\n", 1);
 }
 
-void	ft_rrb(t_list **stack)
+void	ft_rrb(t_list **stack, int silent)
 {
 	ft_reverse_rotate_stack(stack);
-	ft_putstr_fd("rrb\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("rrb\n", 1);
 }
 
-void	ft_rrr(t_list **stack_a, t_list **stack_b)
+void	ft_rrr(t_list **stack_a, t_list **stack_b, int silent)
 {
 	ft_reverse_rotate_stack(stack_a);
 	ft_reverse_rotate_stack(stack_b);
-	ft_putstr_fd("rr\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("rrr\n", 1);
 }

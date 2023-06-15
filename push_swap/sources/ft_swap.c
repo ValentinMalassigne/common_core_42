@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:29:44 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:28:14 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,24 @@ static void	ft_swap_stack_head(t_list *stack)
 	stack->next->content = temp;
 }
 
-void	ft_sa(t_list *stack)
+void	ft_sa(t_list *stack, int silent)
 {
 	ft_swap_stack_head(stack);
-	ft_putstr_fd("sa\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("sa\n", 1);
 }
 
-void	ft_sb(t_list *stack)
+void	ft_sb(t_list *stack, int silent)
 {
 	ft_swap_stack_head(stack);
-	ft_putstr_fd("sb\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("sb\n", 1);
 }
 
-void	ft_ss(t_list *stack_a, t_list *stack_b)
+void	ft_ss(t_list *stack_a, t_list *stack_b, int silent)
 {
 	ft_swap_stack_head(stack_a);
 	ft_swap_stack_head(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	if (silent == 0)
+		ft_putstr_fd("ss\n", 1);
 }

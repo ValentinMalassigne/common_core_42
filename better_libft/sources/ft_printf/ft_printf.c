@@ -6,13 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:06:26 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 17:50:57 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:24:11 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "../../headers/ft_printf.h"
-
 
 static int	select_convertions(const char *format, va_list args)
 {

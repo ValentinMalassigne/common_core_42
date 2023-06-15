@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:45:34 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/10 14:25:41 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 09:28:47 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 # include "../libft/headers/libft.h"
 
 t_list	*manage_init(int argc, char **argv);
-void	ft_sa(t_list *stack);
-void	ft_sb(t_list *stack);
-void	ft_ss(t_list *stack_a, t_list *stack_b);
-void	ft_pa(t_list **stack_a, t_list **stack_b);
-void	ft_pb(t_list **stack_a, t_list **stack_b);
-void	ft_ra(t_list **stack);
-void	ft_rb(t_list **stack);
-void	ft_rr(t_list **stack_a, t_list **stack_b);
-void	ft_rra(t_list **stack);
-void	ft_rrb(t_list **stack);
-void	ft_rrr(t_list **stack_a, t_list **stack_b);
+void	ft_sa(t_list *stack, int silent);
+void	ft_sb(t_list *stack, int silent);
+void	ft_ss(t_list *stack_a, t_list *stack_b, int silent);
+void	ft_pa(t_list **stack_a, t_list **stack_b, int silent);
+void	ft_pb(t_list **stack_a, t_list **stack_b, int silent);
+void	ft_ra(t_list **stack, int silent);
+void	ft_rb(t_list **stack, int silent);
+void	ft_rr(t_list **stack_a, t_list **stack_b, int silent);
+void	ft_rra(t_list **stack, int silent);
+void	ft_rrb(t_list **stack, int silent);
+void	ft_rrr(t_list **stack_a, t_list **stack_b, int silent);
 void	sort_3_node_stack(t_list **stack);
 void	sort_any(t_list **stack_a);
 int		input_is_correct(int argc, char **argv, int start_index);

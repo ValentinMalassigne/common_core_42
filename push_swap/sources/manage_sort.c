@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:02:45 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/06/09 15:05:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:05:02 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_list	*sort_stack_b(t_list **stack_a)
 	t_list	*stack_b;
 
 	stack_b = NULL;
-	if (ft_lstsize(*stack_a) > 3)
-		ft_pb(stack_a, &stack_b);
 	if (ft_lstsize(*stack_a) > 3 && !is_ascending(*stack_a))
-		ft_pb(stack_a, &stack_b);
+		ft_pb(stack_a, &stack_b, 0);
+	if (ft_lstsize(*stack_a) > 3 && !is_ascending(*stack_a))
+		ft_pb(stack_a, &stack_b, 0);
 	if (ft_lstsize(*stack_a) > 3 && !is_ascending(*stack_a))
 		reduce_a_to_size_3(stack_a, &stack_b);
 	if (!is_ascending(*stack_a))
@@ -90,7 +90,7 @@ void	sort_any(t_list **stack_a)
 
 	stack_b = NULL;
 	if (ft_lstsize(*stack_a) == 2)
-		ft_sa(*stack_a);
+		ft_sa(*stack_a, 0);
 	else
 	{
 		stack_b = sort_stack_b(stack_a);
@@ -99,12 +99,12 @@ void	sort_any(t_list **stack_a)
 		if (i < ft_lstsize(*stack_a) - i)
 		{
 			while (*(int *)(*stack_a)->content != list_min(*stack_a))
-				ft_ra(stack_a);
+				ft_ra(stack_a, 0);
 		}
 		else
 		{
 			while (*(int *)(*stack_a)->content != list_min(*stack_a))
-				ft_rra(stack_a);
+				ft_rra(stack_a, 0);
 		}
 	}
 }

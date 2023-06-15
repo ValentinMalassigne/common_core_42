@@ -6,7 +6,7 @@
 #    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 11:18:33 by vmalassi          #+#    #+#              #
-#    Updated: 2023/06/10 14:30:51 by vmalassi         ###   ########.fr        #
+#    Updated: 2023/06/15 09:52:42 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ LIBFT = libft
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC_FILES = push_swap \
-			input_checker \
+MAIN_FILE = push_swap \
+
+SRC_FILES = input_checker \
 			manage_sort \
 			ft_swap \
 			ft_push \
@@ -39,21 +40,20 @@ OBJ_DIR = obj/push_swap/
 BONUS_SRC_DIR = bonus/
 BONUS_OBJ_DIR = obj/bonus/
 
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+MAIN_OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(MAIN_FILE)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-BONUS_SRC = $(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES)))
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(addsuffix .o, $(BONUS_SRC_FILES)))
 
 OBJF = .cache_exists
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(MAIN_OBJ) $(OBJ)
 	make -C $(LIBFT)
-	cc $(CFLAGS) $(OBJ) -o $(NAME) -Llibft -lft
+	cc $(CFLAGS) $(MAIN_OBJ) $(OBJ) -o $(NAME) -Llibft -lft
 
-bonus : all $(BONUS_OBJ)
-	cc $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_NAME) -Llibft -lft
+bonus : all $(OBJ) $(BONUS_OBJ)
+	cc $(CFLAGS) $(OBJ) $(BONUS_OBJ) -o $(BONUS_NAME) -Llibft -lft
 
 clean :
 	rm -rf obj/

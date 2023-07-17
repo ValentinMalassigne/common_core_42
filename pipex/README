@@ -1,0 +1,4 @@
+Quand on fork un process l'enfant obtient une copie des variables du parent.
+Cependant elles sont stockes dans une adresse memoire differente.
+Donc modifier une variable dans un processus n'a aucun n'impacte sur les autres processus.
+(Sauf si on passe par un pointeur, un pipe, ...)

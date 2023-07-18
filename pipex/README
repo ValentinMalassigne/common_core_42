@@ -1,3 +1,15 @@
+TODO :
+
+- Recuperer & Verifier les inputs de l'utilisateur
+
+- Appliquer la cmd1 au file1
+    - Gerer la remonte d'informations quand la command / le fichier  n'est pas found
+
+- Si aucun probleme appliquer la cmd 2 a l'output
+    - Gerer la remonter d'infos ..
+
+- Ecrire l'out put dans le file 2
+
 Quand on fork un process l'enfant obtient une copie des variables du parent.
 Cependant elles sont stockes dans une adresse memoire differente.
 Donc modifier une variable dans un processus n'a aucun n'impacte sur les autres processus.

@@ -5,85 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 07:09:31 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/17 10:06:03 by vmalassi         ###   ########.fr       */
+/*   Created: 2023/07/18 16:24:20 by vmalassi          #+#    #+#             */
+/*   Updated: 2023/07/18 18:51:33 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 
-/*
-The goal :
-./pipex file1 cmd1 cmd2 file2
-==
-< file1 cmd1 | cmd2 > file2
-*/
-
-#define die(e) do { fprintf(stderr, "%s\n", e); exit(EXIT_FAILURE); } while (0);
-
-void	run_command_on_file(int link[2], char *command, char *file, char **env)
+int	main(int argc, char **argv, char **envp)
 {
-	pid_t pid;
-	if ((pid = fork()) == -1){
-		die("fork");
-	}
-	if (pid == 0)
+	int				in_pipe[2];
+	int				out_pipe[2];
+	char			cmd_output[4090];
+	unsigned long	i;
+
+	if (argc != 4)
 	{
-		dup2 (link[1], STDOUT_FILENO);
-		close(link[0]);
-		char *args[] = {ft_strjoin("/bin/", command), file, NULL};
-		execve(args[0], args, env);
-		die("execl");
+		ft_printf("Error : Invalid number of arguments\n");
+		return (-1);
 	}
-}
-
-void	run_command_on_stdin(int link[2], char *command,char *content, char **env)
-{
-	pid_t pid;
-	if ((pid = fork()) == -1){
-		die("fork");
-	}
-	if(pid == 0) {
-        // This is the child process
-        close(link[1]); // close the write end of the pipe in the child
-        dup2(link[0], STDIN_FILENO); // make stdin the read end of the pipe
-        char *args[] = {command, NULL};
-		execve(ft_strjoin("/bin/", command), args, env); // replace the child process with wc
-		die("execl");
-    } else {
-
-        // This is the parent process
-        close(link[0]); // close the read end of the pipe in the parent
-        write(link[1], content, ft_strlen(content)); // write the string to the pipe
-        close(link[1]); // close the write end of the pipe
-    }
-
-}
-
-int main(int argc, char **argv, char **env)
-{
-	if (argc == 5)
+	i = 0;
+	while (i < sizeof(cmd_output))
+		cmd_output[i++] = 0;
+	if (pipe(out_pipe) == -1)
 	{
-		char cmd_output[4096];
-
-		int link[2];
-		if (pipe(link) == -1){
-			die("pipe");
-		}
-		run_command_on_file(link, argv[2], argv[1], env);
-
-		read(link[0], cmd_output, sizeof(cmd_output));
-		
-		cmd_output[sizeof(cmd_output)- 1] = 0;
-		ft_printf("length : %d\n", ft_strlen(cmd_output));
-		run_command_on_stdin(link, argv[3],cmd_output, env);
-		close(link[1]);
-
-		ft_printf("Output: %s\n", cmd_output);
+		ft_printf("TODO pipe creation failure\n");
+		return (-1);
 	}
-	else
+	cmd_on_file(argv[2], argv[1], out_pipe, envp);
+	read(out_pipe[0], cmd_output, sizeof(cmd_output));
+	if (pipe(in_pipe) == -1)
 	{
-		ft_printf("Wrong number of parameters\n");
+		ft_printf("TODO pipe creation failure\n");
+		return (-1);
 	}
+	close(out_pipe[0]);
+	close(out_pipe[1]);
+	if (pipe(out_pipe) == -1)
+	{
+		ft_printf("TODO pipe creation failure\n");
+		return (-1);
+	}
+	write(in_pipe[1], cmd_output, sizeof(cmd_output));
+	close(in_pipe[1]);
+	cmd_on_string(argv[3], in_pipe, out_pipe, envp);
+	close(in_pipe[0]);
+	i = 0;
+	while (i < sizeof(cmd_output))
+		cmd_output[i++] = 0;
+	read(out_pipe[0], cmd_output, sizeof(cmd_output));
+	close(out_pipe[0]);
+	close(out_pipe[1]);
+	ft_printf("Output:%s", cmd_output);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 06:17:10 by vmalassi          #+#    #+#              #
-#    Updated: 2023/07/15 08:34:24 by vmalassi         ###   ########.fr        #
+#    Updated: 2023/07/18 16:15:44 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ LIBFT = libft
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_FILES = pipex \
+			input_parsing \
+			commands_execution \
 
 SRC_DIR = sources/
 OBJ_DIR = obj/pipex/

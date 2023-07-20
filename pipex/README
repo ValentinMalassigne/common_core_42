@@ -1,14 +1,25 @@
 TODO :
 
-- Recuperer & Verifier les inputs de l'utilisateur
+- Verifier le nb d'inputs
 
-- Appliquer la cmd1 au file1
-    - Gerer la remonte d'informations quand la command / le fichier  n'est pas found
+- Creer le pipe de la commande sur le file
 
-- Si aucun probleme appliquer la cmd 2 a l'output
-    - Gerer la remonter d'infos ..
+- Appeler la premiere commande.
 
-- Ecrire l'out put dans le file 2
+- Gerer s'il y a eu une erreur
+
+- Sinon recuper l'output pour preparer l'appel de la deuxieme commande
+
+- Close ou ouvrir les pipes necessaires
+
+- Appeler la deuxieme commande
+
+- Gerer s'il y a eu une erreur
+
+- Sinon recup l'output pour l'envoyer au write du fichier
+
+
+
 
 Quand on fork un process l'enfant obtient une copie des variables du parent.
 Cependant elles sont stockes dans une adresse memoire differente.

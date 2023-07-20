@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:31:40 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/18 21:02:53 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:20:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**get_path_list(char **envp)
 		if (envp[i][0] == 'P' && envp[i][1] == 'A'
 		&& envp[i][2] == 'T' && envp[i][3] == 'H')
 		{
-			return ft_split(envp[i], ':');
+			return (ft_split(envp[i], ':'));
 		}
 		i++;
 	}
@@ -38,7 +38,6 @@ char	*get_command_path(char *command, char **envp)
 
 	path_list = get_path_list(envp);
 	command_path = NULL;
-
 	i = 0;
 	while (path_list[i])
 	{
@@ -46,7 +45,7 @@ char	*get_command_path(char *command, char **envp)
 		command_path = ft_strjoin(path_list[i], command_with_slash);
 		free(command_with_slash);
 		if (access(command_path, X_OK) == 0)
-			break;
+			break ;
 		i++;
 		free(command_path);
 	}
@@ -61,12 +60,13 @@ char	*get_options(char *cmd_and_options)
 {
 	char	*options;
 	int		i;
-
+	
 	if (!cmd_and_options)
 		return (NULL);
 	i = 0;
 	while (*cmd_and_options && *cmd_and_options != ' ')
 		cmd_and_options++;
+	cmd_and_options++;
 	while (cmd_and_options[i] && cmd_and_options[i] != ' ')
 		i++;
 	if (i == 0)
@@ -108,7 +108,6 @@ char	*get_command(char *cmd_and_options)
 char	**get_cmd_options(char *tab[4], char *options, char *cmd, char *file)
 {
 	tab[0] = cmd;
-
 	if (options)
 	{
 		tab[1] = options;

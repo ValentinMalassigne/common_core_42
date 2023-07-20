@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:22:05 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/18 21:03:09 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:23:15 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	cmd_on_file(char *cmd_tab, char *file, int *out_pipe, char **env)
 		ft_printf("Todo implement command_path error\n");
 		return ;
 	}
+	printf("command_path |%s|\ncommand_options[0] |%s|\ncommand_options[1] |%s|\ncommand_options[2] |%s|\ncommand_options[3] |%s|\n", command_path, command_options[0], command_options[1], command_options[2], command_options[3]);
 	ex_on_file(command_path, command_options, out_pipe, env);
 }
 

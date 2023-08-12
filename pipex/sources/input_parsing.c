@@ -60,13 +60,15 @@ char	*get_options(char *cmd_and_options)
 {
 	char	*options;
 	int		i;
-	
+
 	if (!cmd_and_options)
 		return (NULL);
 	i = 0;
 	while (*cmd_and_options && *cmd_and_options != ' ')
 		cmd_and_options++;
 	cmd_and_options++;
+	if (!cmd_and_options)
+		return (NULL);
 	while (cmd_and_options[i] && cmd_and_options[i] != ' ')
 		i++;
 	if (i == 0)

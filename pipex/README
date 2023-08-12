@@ -18,6 +18,10 @@ TODO :
 
 - Sinon recup l'output pour l'envoyer au write du fichier
 
+- free le malloc de cmd_ouput en cas d'erreur
+
+- faire un meilleur malloc pour cmd_output
+
 
 
 

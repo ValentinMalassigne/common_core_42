@@ -24,6 +24,7 @@ SRC_DIR = sources/
 OBJ_DIR = obj/pipex/
 
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+OBJ = $(SRC_FILES:.c=.o)
 
 OBJF = .cache_exists
 
@@ -48,5 +49,3 @@ $(OBJF):
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(OBJF)
 	cc $(CFLAGS) -I. -c $< -o $@
-
-.SILENT:

@@ -23,6 +23,17 @@ TODO :
 - faire un meilleur malloc pour cmd_output
 
 
+New todo :
+
+OK - Verifier les inputs
+
+- Gerer les erreurs comme le bash
+
+- Verfier que les erreurs de malloc / de pipe sont bien gerees
+
+- Utiliser get next line pour lire les outputs
+
+- Verifier les free en cas d'erreur
 
 
 Quand on fork un process l'enfant obtient une copie des variables du parent.

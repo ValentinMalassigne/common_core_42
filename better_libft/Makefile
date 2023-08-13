@@ -102,5 +102,5 @@ $(OBJF):
 	mkdir -p $(OBJ_DIR)/$(GET_NEXT_LINE)
 	mkdir -p $(OBJ_DIR)/$(FT_PRINTF)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(OBJF)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	cc $(CFLAGS) -I. -c $< -o $@

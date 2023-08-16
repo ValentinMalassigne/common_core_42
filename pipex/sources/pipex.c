@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
+#include <errno.h>
+#include <string.h>
 
 int	write_outfile(char	*file_name, char	*cmd_output)
 {
@@ -19,7 +21,7 @@ int	write_outfile(char	*file_name, char	*cmd_output)
 	outfile = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile == -1)
 	{
-		ft_printf("Error when open / create / truncate file\n");
+		ft_printf("Error: %s: %s\n", strerror(errno), file_name);
 		return (-1);
 	}
 	write(outfile, cmd_output, ft_strlen(cmd_output));

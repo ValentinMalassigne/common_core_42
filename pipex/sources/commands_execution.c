@@ -16,6 +16,7 @@ static void	ex_on_file(char *cmd_path, char **options, int *pipe, char **env)
 {
 	pid_t	pid;
 	int		i;
+	int		status;
 
 	pid = fork();
 	if (pid == 0)
@@ -25,6 +26,7 @@ static void	ex_on_file(char *cmd_path, char **options, int *pipe, char **env)
 		close(pipe[1]);
 		execve(cmd_path, options, env);
 	}
+	waitpid(pid, &status, 0);
 	free(cmd_path);
 	i = 0;
 	while (options[i])
@@ -37,6 +39,7 @@ static void	ex_on_str(char *cmd_path, char **options, int *pipes[2], char **env)
 	int		*in_pipe;
 	int		*out_pipe;
 	int		i;
+	int		status;
 
 	in_pipe = pipes[0];
 	out_pipe = pipes[1];
@@ -51,6 +54,7 @@ static void	ex_on_str(char *cmd_path, char **options, int *pipes[2], char **env)
 		close(in_pipe[0]);
 		execve(cmd_path, options, env);
 	}
+	waitpid(pid, &status, 0);
 	free(cmd_path);
 	i = 0;
 	while (options[i])

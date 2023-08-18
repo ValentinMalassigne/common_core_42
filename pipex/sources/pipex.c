@@ -14,80 +14,80 @@
 #include <errno.h>
 #include <string.h>
 
-int	write_outfile(char	*file_name, char	*cmd_output)
+static void	exec_command(char *command_and_options, char **envp)
 {
-	int	outfile;
+	char	**splited_command_options;
+	char	*command_path;
 
-	outfile = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (outfile == -1)
+	splited_command_options = ft_split(command_and_options, ' ');
+	command_path = get_command_path(splited_command_options[0], envp);
+	if (execve(command_path, splited_command_options, envp) == -1)
 	{
-		ft_printf("Error: %s: %s\n", strerror(errno), file_name);
-		return (-1);
+		ft_putstr_fd("Error: command not found: ", 2);
+		ft_putendl_fd(splited_command_options[0], 2);
+		free(command_path);
+		free_tab(splited_command_options);
 	}
-	write(outfile, cmd_output, ft_strlen(cmd_output));
-	free(cmd_output);
-	return (0);
 }
 
-int	run_cat_cmd(char cmd_output[4096], char **argv, char **envp)
+pid_t	run_first_command(int pipex[2], char **argv, char **envp)
 {
-	int		out_pipe[2];
-	char	*cat_cmd;
+	pid_t	pid;
+	int		input_fd;
 
-	cat_cmd = malloc(5 * sizeof (char));
-	cat_cmd = ft_memset(cat_cmd, 0, 5);
-	cat_cmd[0] = 'c';
-	cat_cmd[1] = 'a';
-	cat_cmd[2] = 't';
-	ft_memset(cmd_output, 0, 4096);
-	if (set_pipe(out_pipe) == -1)
+	pid = fork();
+	if (pid == -1)
 		return (-1);
-	cmd_on_file(cat_cmd, argv[1], out_pipe, envp);
-	read(out_pipe[0], cmd_output, 4096);
-	close_pipe(out_pipe);
-	free(cat_cmd);
-	return (0);
+	else if (pid == 0)
+	{
+		input_fd = open_file(argv[1], 0);
+		dup2(input_fd, 0);
+		dup2(pipex[1], 1);
+		close_pipe(pipex);
+		exec_command(argv[2], envp);
+	}
+	return (pid);
 }
 
-int	run_cmd(char cmd_output[4096], char *cmd, char **envp)
+pid_t	run_second_command(int pipex[2], char **argv, char **envp)
 {
-	int	in_pipe[2];
-	int	out_pipe[2];
+	pid_t	pid;
+	int		output_fd;
 
-	if (set_pipe(in_pipe) == -1)
+	pid = fork();
+	if (pid == -1)
 		return (-1);
-	if (set_pipe(out_pipe) == -1)
-		return (-1);
-	write(in_pipe[1], cmd_output, ft_strlen(cmd_output));
-	close(in_pipe[1]);
-	cmd_on_string(cmd, in_pipe, out_pipe, envp);
-	close(in_pipe[0]);
-	ft_memset(cmd_output, 0, 4096);
-	read(out_pipe[0], cmd_output, 4096);
-	close_pipe(out_pipe);
-	return (0);
+	else if (pid == 0)
+	{
+		output_fd = open_file(argv[4], 1);
+		dup2(output_fd, 1);
+		dup2(pipex[0], 0);
+		close_pipe(pipex);
+		exec_command(argv[3], envp);
+	}
+	return (pid);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	char			*cmd_output;
+	int		pipex[2];
+	pid_t	pid;
+	//int		status;
 
 	if (argc != 5)
 	{
 		ft_printf("Error : Invalid number of arguments\n");
 		return (-1);
 	}
-	cmd_output = malloc(4096 * sizeof(char));
-	if (!cmd_output)
-	{
-		ft_printf("Error : can't malloc output");
+	if (set_pipe(pipex) == -1)
 		return (-1);
-	}
-	if (run_cat_cmd(cmd_output, argv, envp) == -1)
+	pid = run_first_command(pipex, argv, envp);
+	if (pid == -1)
 		return (-1);
-	if (run_cmd(cmd_output, argv[2], envp) == -1)
+	//waitpid(pid, &status, 0);
+	pid = run_second_command(pipex, argv, envp);
+	if (pid == -1)
 		return (-1);
-	if (run_cmd(cmd_output, argv[3], envp) == -1)
-		return (-1);
-	return (write_outfile(argv[4], cmd_output));
+	//waitpid(pid, &status, 0);
+	return (0);
 }

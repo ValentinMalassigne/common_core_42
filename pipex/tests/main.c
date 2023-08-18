@@ -30,58 +30,85 @@ char	*ft_strjoin_gnl(char *s1, const char *s2)
 	free(s1);
 	return (res);
 }
-
-int main() {
-    int pipe_fd[2];
-    if (pipe(pipe_fd) == -1) {
-        perror("Pipe creation failed");
-        return 1;
-    }
-
-    // Fork a child process
-    pid_t pid = fork();
-    if (pid == -1) {
-        perror("Fork failed");
-        return 1;
-    }
-
+#include <sys/wait.h>
+int main3() {
+   pid_t pid = fork();
     if (pid == 0) {
-        // Child process: Write data to the pipe
-        close(pipe_fd[0]); // Close the read end of the pipe
-
-        // Redirect stdout to the pipe
-        dup2(pipe_fd[1], STDOUT_FILENO);
-
-        // Execute a command (replace "your_command" with the actual command)
-        execlp("ls", "ls", NULL);
-
-        // If execlp fails
-        perror("execlp failed");
-        return 1;
+        char    *test1 = malloc(1);
+        printf("Child process\n");
+        char *args[] = {"ls", "-l", NULL};
+        char *env[] = {NULL};
+        execve("/bin/ls", args, env);
+        printf("This line will not be executed\n");
+    } else if (pid > 0) {
+        char    *test2 = malloc(10);
+        printf("Parent process\n");
+        int status;
+        waitpid(pid, &status, 0);
+        if (WIFEXITED(status)) {
+            printf("Child process exited with status: %d\n", WEXITSTATUS(status));
+        }
+        pid_t pid = fork();
+        if (pid == 0) {
+            char    *test3 = malloc(100);
+            printf("Child process2\n");
+            char *args[] = {"ls", "-l", NULL};
+            char *env[] = {NULL};
+            execve("/bin/ls", args, env);
+            printf("This line will not be executed\n");
+        }
+        char    *test4 = malloc(1000);
+        printf("Parent process2\n");
+        
+        waitpid(pid, &status, 0);
+        if (WIFEXITED(status)) {
+            printf("Child process2 exited with status: %d\n", WEXITSTATUS(status));
+        }
     } else {
-        // Parent process: Read data from the pipe
-        close(pipe_fd[1]); // Close the write end of the pipe
-
-        char buffer[BUFFER_SIZE];
-        ssize_t bytes_read = 1;
-        size_t total_bytes_read = 0;
-        char    *res = NULL;
-
-        while (bytes_read > 0) {
-            bytes_read = read(pipe_fd[0], buffer, 3);
-            total_bytes_read += bytes_read;
-            
-            res = ft_strjoin_gnl(res, buffer);
-            memset(buffer, 0, bytes_read);
-        }
-
-        if (bytes_read == -1) {
-            perror("Read error");
-            return 1;
-        }
-        printf("res : %s",res);
-        printf("Total bytes read: %zu\n", total_bytes_read);
+        printf("Fork failed\n");
     }
+
 
     return 0;
+}
+
+//des leaks mais on les voit pas !!!!!!
+int mainLeaks()
+{
+    pid_t pid = fork();
+    int     status;
+    if (pid == 0)
+    {
+        char *test = malloc(100);
+        char *args[] = {"ls", "-l", NULL};
+        char *env[] = {NULL};
+        execve("/bin/ls", args, env);
+    }
+    else
+        waitpid(pid, &status, 0);
+    return (0);
+}
+
+//Des leaks mais on peut les voir :)
+int main()
+{
+    pid_t pid = fork();
+    pid_t pid2;
+    int     status;
+    if (pid == 0)
+    {
+        char *test = malloc(100);
+        pid2 = fork();
+        if (pid2 == 0)
+        {
+            char *args[] = {"ls", "-l", NULL};
+            char *env[] = {NULL};
+            execve("/bin/ls", args, env);
+        }
+        else   
+            waitpid(pid2, &status, 0);
+    }
+    else
+        waitpid(pid, &status, 0);
+    return (0);
 }

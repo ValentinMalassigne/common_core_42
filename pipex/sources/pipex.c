@@ -49,14 +49,14 @@ pid_t	run_first_command(int pipex[2], char **argv, char **envp)
 	return (pid);
 }
 
-pid_t	run_second_command(int pipex[2], char **argv, char **envp)
+static void	run_second_command(int pipex[2], char **argv, char **envp)
 {
 	pid_t	pid;
 	int		output_fd;
 
 	pid = fork();
 	if (pid == -1)
-		return (-1);
+		return ;
 	else if (pid == 0)
 	{
 		output_fd = open_file(argv[4], 1);
@@ -65,14 +65,13 @@ pid_t	run_second_command(int pipex[2], char **argv, char **envp)
 		close_pipe(pipex);
 		exec_command(argv[3], envp);
 	}
-	return (pid);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
 	int		pipex[2];
+	int		status;
 	pid_t	pid;
-	//int		status;
 
 	if (argc != 5)
 	{
@@ -82,12 +81,8 @@ int	main(int argc, char **argv, char **envp)
 	if (set_pipe(pipex) == -1)
 		return (-1);
 	pid = run_first_command(pipex, argv, envp);
-	if (pid == -1)
-		return (-1);
-	//waitpid(pid, &status, 0);
-	pid = run_second_command(pipex, argv, envp);
-	if (pid == -1)
-		return (-1);
-	//waitpid(pid, &status, 0);
+	if (pid > 0)
+		waitpid(pid, &status, 0);
+	run_second_command(pipex, argv, envp);
 	return (0);
 }

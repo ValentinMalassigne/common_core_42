@@ -17,7 +17,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC_FILES = pipex \
 			input_parsing \
-			commands_execution \
 			utils \
 
 SRC_DIR = sources/

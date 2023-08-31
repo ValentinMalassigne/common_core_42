@@ -10,11 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME := libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror
 
-LIBFT = libft
+OBJDIR := objects
+SRCDIR := sources
+
+LIBFT := libft
 GET_NEXT_LINE = get_next_line
 FT_PRINTF = ft_printf
 
@@ -74,20 +77,14 @@ FT_PRINTF_SRC = ft_printf \
 			print_hex \
 			utils \
 
-SOURCES := $(addprefix $(LIBFT)/, $(LIBFT_SRC)) $(addprefix $(GET_NEXT_LINE)/, $(GET_NEXT_LINE_SRC)) $(addprefix $(FT_PRINTF)/, $(FT_PRINTF_SRC))
+OBJS := $(addprefix $(OBJDIR)/$(LIBFT)/, $(addsuffix .o, $(LIBFT_SRC)))
+OBJS += $(addprefix $(OBJDIR)/$(GET_NEXT_LINE)/, $(addsuffix .o, $(GET_NEXT_LINE_SRC)))
+OBJS += $(addprefix $(OBJDIR)/$(FT_PRINTF)/, $(addsuffix .o, $(FT_PRINTF_SRC)))
 
-SRC_DIR = sources/
-OBJ_DIR = objects/
+all :$(OBJS) $(NAME)
 
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SOURCES)))
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SOURCES)))
-
-OBJF = .cache_exists
-
-all : $(NAME)
-
-$(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -rf objects/
@@ -97,10 +94,12 @@ fclean: clean
 
 re: fclean $(NAME)
 
-$(OBJF):
-	mkdir -p $(OBJ_DIR)/$(LIBFT)
-	mkdir -p $(OBJ_DIR)/$(GET_NEXT_LINE)
-	mkdir -p $(OBJ_DIR)/$(FT_PRINTF)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	cc $(CFLAGS) -I. -c -o $@ $<
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	cc $(CFLAGS) -I. -c $< -o $@
+$(OBJS): | $(OBJDIR)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)/$(LIBFT)/
+	mkdir -p $(OBJDIR)/$(GET_NEXT_LINE)
+	mkdir -p $(OBJDIR)/$(FT_PRINTF)

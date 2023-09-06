@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:24:20 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/09/06 12:38:37 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:38:54 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	exec_command(char *command_and_options, char **envp)
 	}
 }
 
-void redirect_here_doc(char **argv, int pipex[2])
+void	redirect_here_doc(char **argv, int pipex[2])
 {
 	char	*input;
 
@@ -50,7 +50,7 @@ void redirect_here_doc(char **argv, int pipex[2])
 
 void	manage_here_doc(char **argv)
 {
-	int 	pipex[2];
+	int		pipex[2];
 	int		status;
 	pid_t	pid;
 
@@ -66,7 +66,7 @@ void	manage_here_doc(char **argv)
 		close(pipex[1]);
 		dup2(pipex[0], 0);
 		waitpid(pid, &status, 0);
-	}	
+	}
 }
 
 void	exec_pipex(char *command, char **envp)
@@ -94,12 +94,11 @@ void	exec_pipex(char *command, char **envp)
 	}
 }
 
-
 int	main(int argc, char **argv, char **envp)
 {
-	int start_index;
+	int	start_index;
 	int	input_fd;
-	int output_fd;
+	int	output_fd;
 
 	if (argc < 5 || (ft_strcmp(argv[1], "here_doc") == 0 && argc < 6))
 	{
@@ -108,20 +107,18 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else if (ft_strcmp(argv[1], "here_doc") == 0)
 	{
-		output_fd = open_file(argv[argc - 1], 2);
 		start_index = 3;
 		manage_here_doc(argv);
 	}
 	else
 	{
 		input_fd = open_file(argv[1], 0);
-		output_fd = open_file(argv[argc - 1], 1);
 		dup2(input_fd, 0);
 		start_index = 2;
 	}
+	output_fd = open_file(argv[argc - 1], start_index - 1);
 	while (start_index < argc - 2)
 		exec_pipex(argv[start_index++], envp);
 	dup2(output_fd, 1);
-	exec_command(argv[argc -2], envp);
-	return (0);
+	exec_command(argv[argc - 2], envp);
 }

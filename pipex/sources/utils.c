@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:40:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/20 17:40:57 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:50:42 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	set_pipe(int pipex[2])
 {
 	if (pipe(pipex) == -1)
 	{
-		ft_printf("TODO pipe creation failure\n");
+		ft_printf("Error : pipe creation failure\n");
 		return (-1);
 	}
 	return (0);

@@ -73,7 +73,7 @@ int main3() {
 }
 
 //des leaks mais on les voit pas !!!!!!
-int mainLeaks()
+int main()
 {
     pid_t pid = fork();
     int     status;
@@ -90,7 +90,7 @@ int mainLeaks()
 }
 
 //Des leaks mais on peut les voir :)
-int main()
+int main2()
 {
     pid_t pid = fork();
     pid_t pid2;

@@ -18,10 +18,10 @@ OBJDIR := objects
 SRCDIR := sources
 
 LIBFT := libft
-GET_NEXT_LINE = get_next_line
-FT_PRINTF = ft_printf
+GET_NEXT_LINE := get_next_line
+FT_PRINTF := ft_printf
 
-LIBFT_SRC = ft_isalpha \
+LIBFT_SRC := ft_isalpha \
 		ft_isdigit \
 		ft_isalnum \
 		ft_isascii \
@@ -65,10 +65,10 @@ LIBFT_SRC = ft_isalpha \
 		ft_lstiter \
 		ft_lstmap \
 
-GET_NEXT_LINE_SRC = get_next_line \
+GET_NEXT_LINE_SRC := get_next_line \
 		get_next_line_utils \
 
-FT_PRINTF_SRC = ft_printf \
+FT_PRINTF_SRC := ft_printf \
 			print_char \
 			print_str \
 			print_ptr \

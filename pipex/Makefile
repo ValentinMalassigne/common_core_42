@@ -6,44 +6,46 @@
 #    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 06:17:10 by vmalassi          #+#    #+#              #
-#    Updated: 2023/07/20 17:42:23 by vmalassi         ###   ########.fr        #
+#    Updated: 2023/09/06 12:04:52 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
+BONUS_NAME = pipex_bonus
 LIBFT = libft
 
 CFLAGS = -Wall -Wextra -Werror
+
+SRC_DIR := sources
+BONUS_DIR := bonus_sources
 
 SRC_FILES = pipex \
 			input_parsing \
 			utils \
 
-SRC_DIR = sources/
-OBJ_DIR = obj/pipex/
+BONUS_FILES = pipex_bonus \
+			input_parsing_bonus \
+			utils_bonus \
 
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-
-OBJF = .cache_exists
+SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
+BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(addsuffix .c, $(BONUS_FILES)))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):
 	make -C $(LIBFT)
-	cc $(CFLAGS) $(OBJ) -o $(NAME) -Llibft -lft
+	cc $(CFLAGS) $(SRCS) -o $(NAME) -Llibft -lft
+
+bonus:
+	make -C $(LIBFT)
+	cc $(CFLAGS) $(BONUS_SRCS) -o $(BONUS_NAME) -Llibft -lft
 
 clean:
-	rm -rf obj/
 	make clean -C $(LIBFT)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 	make fclean -C $(LIBFT)
 
 re: fclean $(NAME)
-
-$(OBJF):
-	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	cc $(CFLAGS) -I. -c $< -o $@

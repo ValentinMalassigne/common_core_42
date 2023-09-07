@@ -6,7 +6,7 @@
 #    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 06:17:10 by vmalassi          #+#    #+#              #
-#    Updated: 2023/09/06 18:16:12 by vmalassi         ###   ########.fr        #
+#    Updated: 2023/09/07 17:52:23 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME):
 	make -C $(LIBFT)
 	cc $(CFLAGS) $(SRCS) -o $(NAME) -Llibft -lft
 
-bonus:
+bonus: fclean
 	make -C $(LIBFT)
 	cc $(CFLAGS) $(BONUS_SRCS) -o $(NAME) -Llibft -lft
 

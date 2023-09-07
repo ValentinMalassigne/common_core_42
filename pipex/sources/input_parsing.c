@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:31:40 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:06:34 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char	*get_command_path(char *command, char **envp)
 		if (access(command_path, X_OK) == 0)
 			break ;
 		i++;
-		free(command_path);
+		if (path_list[i])
+			free(command_path);
 	}
 	i = 0;
 	while (path_list[i])

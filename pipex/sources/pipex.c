@@ -6,13 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:24:20 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/20 17:40:53 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:06:25 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
-#include <errno.h>
-#include <string.h>
 
 static void	exec_command(char *command_and_options, char **envp)
 {
@@ -27,6 +25,7 @@ static void	exec_command(char *command_and_options, char **envp)
 		ft_putendl_fd(splited_command_options[0], 2);
 		free(command_path);
 		free_tab(splited_command_options);
+		exit(-1);
 	}
 }
 
@@ -43,7 +42,7 @@ pid_t	run_first_command(int pipex[2], char **argv, char **envp)
 		input_fd = open_file(argv[1], 0);
 		dup2(input_fd, 0);
 		dup2(pipex[1], 1);
-		close_pipe(pipex);
+		close(pipex[0]);
 		exec_command(argv[2], envp);
 	}
 	return (pid);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_parsing.c                                    :+:      :+:    :+:   */
+/*   input_parsing_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:31:40 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:55:53 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 
 char	**get_path_list(char **envp)
 {
@@ -47,7 +47,8 @@ char	*get_command_path(char *command, char **envp)
 		if (access(command_path, X_OK) == 0)
 			break ;
 		i++;
-		free(command_path);
+		if (path_list[i])
+			free(command_path);
 	}
 	i = 0;
 	while (path_list[i])

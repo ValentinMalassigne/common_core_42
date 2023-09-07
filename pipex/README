@@ -1,50 +1,15 @@
 TODO :
 
-- Verifier le nb d'inputs
+Mauvais input avec la commande 
+./pipex infile "laaa -l" "wc -l" outfile
 
-- Creer le pipe de la commande sur le file
-
-- Appeler la premiere commande.
-
-- Gerer s'il y a eu une erreur
-
-- Sinon recuper l'output pour preparer l'appel de la deuxieme commande
-
-- Close ou ouvrir les pipes necessaires
-
-- Appeler la deuxieme commande
-
-- Gerer s'il y a eu une erreur
-
-- Sinon recup l'output pour l'envoyer au write du fichier
-
-- free le malloc de cmd_ouput en cas d'erreur
-
-- faire un meilleur malloc pour cmd_output
+Out put de la merde en mode bonus
 
 
-New todo :
-
-OK - Verifier les inputs
-
-- Utiliser get next line pour lire les outputs
-
-- Gerer les erreurs comme le bash
-    - ./pipex infile cmd1 cmd2 outfile
-    - Erreur dans le nom du infile : rien ne se passe
-    - Erreur dans la cmd 1 : rien ne passe apres le cat
-    - Erreur dans cmd 2 : on a execute la cmd 1 mais on s'arrete
-    - Erreur dans la creation du file :
-
-- Verfier que les erreurs de malloc / de pipe sont bien gerees
-
-- Verifier les free en cas d'erreur
 
 Erreurs connues : 
- - ./pipex infile "touch -t 202003081047.30" "echo" outfile
- - ./pipex infile "ls -l" "echo" outfile
+ - 
+ OK en Normal
+ ./pipex infile "ls -l" "echo" outfile
 
-Quand on fork un process l'enfant obtient une copie des variables du parent.
-Cependant elles sont stockes dans une adresse memoire differente.
-Donc modifier une variable dans un processus n'a aucun n'impacte sur les autres processus.
-(Sauf si on passe par un pointeur, un pipe, ...)
+ - ./pipex infile "touch -t 202003081047.30" "echo" outfile

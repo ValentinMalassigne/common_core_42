@@ -6,15 +6,13 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:24:20 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/09/06 17:38:54 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:37:39 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
-#include <errno.h>
-#include <string.h>
+#include "../headers/pipex_bonus.h"
 
-static void	exec_command(char *command_and_options, char **envp)
+void	exec_command(char *command_and_options, char **envp)
 {
 	char	**splited_command_options;
 	char	*command_path;
@@ -27,6 +25,7 @@ static void	exec_command(char *command_and_options, char **envp)
 		ft_putendl_fd(splited_command_options[0], 2);
 		free(command_path);
 		free_tab(splited_command_options);
+		exit(-1);
 	}
 }
 
@@ -37,10 +36,11 @@ void	redirect_here_doc(char **argv, int pipex[2])
 	close(pipex[0]);
 	while (1)
 	{
-		input = get_next_line(0);
+		input = get_next_line(0, 0);
 		if (ft_strncmp(input, argv[2], ft_strlen(argv[2])) == 0)
 		{
 			free(input);
+			get_next_line(0, 1);
 			exit(0);
 		}
 		ft_putstr_fd(input, pipex[1]);
@@ -119,6 +119,5 @@ int	main(int argc, char **argv, char **envp)
 	output_fd = open_file(argv[argc - 1], start_index - 1);
 	while (start_index < argc - 2)
 		exec_pipex(argv[start_index++], envp);
-	dup2(output_fd, 1);
-	exec_command(argv[argc - 2], envp);
+	last_command(output_fd, argv, argc, envp);
 }

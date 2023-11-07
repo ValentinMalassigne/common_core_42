@@ -276,8 +276,8 @@ int main()
 	//draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 1, 1, 42, 42, endian1);
 	draw_center_rectangle(mlx, local_endian, data1, bpp1, sl1, WIN1_SX, WIN1_SY, 42, 42, endian1);
 	draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 0, 0, 42, 42, endian1);
-	draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 0, 42, 42, 42, endian1);
-	draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 42, 0, 42, 42, endian1);
+	draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 0, 43, 42, 42, endian1);
+	draw_rectangle(mlx, local_endian, data1, bpp1, sl1, 43, 0, 42, 42, endian1);
 
 	mlx_put_image_to_window(mlx,win1,im1,0,0);
 

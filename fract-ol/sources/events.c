@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:50:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 17:05:48 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:54:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	zoom(t_fractol *fractol, double zoom)
 {
-	double center_r;
-	double center_i;
+	double	center_r;
+	double	center_i;
 
 	center_r = fractol->min_r - fractol->max_r;
 	center_i = fractol->max_i - fractol->min_i;
@@ -25,10 +25,10 @@ static void	zoom(t_fractol *fractol, double zoom)
 	fractol->max_i = fractol->min_i + zoom * center_i;
 }
 
-static void move(t_fractol *fractol, double distance, char direction)
+static void	move(t_fractol *fractol, double distance, char direction)
 {
-	double center_r;
-	double center_i;
+	double	center_r;
+	double	center_i;
 
 	center_r = fractol->max_r - fractol->min_r;
 	center_i = fractol->max_i - fractol->min_i;

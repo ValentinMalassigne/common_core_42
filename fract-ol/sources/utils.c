@@ -6,13 +6,13 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:29:06 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 15:23:12 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:50:18 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fractol.h"
 
-void exit_and_free(int code, t_fractol *fractol)
+void	exit_and_free(int code, t_fractol *fractol)
 {
 	if (!fractol)
 		exit(code);
@@ -31,16 +31,16 @@ void exit_and_free(int code, t_fractol *fractol)
 	exit(code);
 }
 
-static int ft_isspace(int c)
+static int	ft_isspace(int c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (c);
 	return (0);
 }
 
-static int skip_spaces_get_sign(char *str, int *sign)
+static int	skip_spaces_get_sign(char *str, int *sign)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isspace(str[i]))

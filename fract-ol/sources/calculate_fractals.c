@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:39:30 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 15:36:57 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:54:57 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	mandelbrot(double pr, double pi)
 	while (n < ITERATIONS_LIMIT)
 	{
 		if ((r * r + i * i) > 4.0)
-			break;
+			break ;
 		temp = 2 * r * i + pi;
 		r = r * r - i * i + pr;
 		i = temp;
@@ -36,8 +36,8 @@ int	mandelbrot(double pr, double pi)
 
 int	julia(t_fractol *fractol, double r, double i)
 {
-	int n;
-	double temp;
+	int		n;
+	double	temp;
 
 	n = 0;
 	while (n < ITERATIONS_LIMIT)

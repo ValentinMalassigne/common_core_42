@@ -1,5 +1,0 @@
-color set de base dans l'initialization
-
-remove le data dans init_image
-
-dans manage_color modulo 5 au lieu de 9

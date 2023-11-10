@@ -6,18 +6,18 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:15:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 15:41:15 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/10 21:23:04 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fractol.h"
 
-static void get_julia_settings(t_fractol *fractol, int argc, char **argv)
+static void	get_julia_settings(t_fractol *fractol, int argc, char **argv)
 {
 	if (fractol->set != 2 || argc == 2)
 	{
-		fractol->julia_r = -0.766667;
-		fractol->julia_i = -0.090000;
+		fractol->julia_r = 0.285;
+		fractol->julia_i =  0.01;
 		return ;
 	}
 	if (argc == 3)
@@ -30,13 +30,13 @@ static void get_julia_settings(t_fractol *fractol, int argc, char **argv)
 	fractol->julia_i = ft_atof(argv[3]);
 	if (fractol->julia_r > 2.0 || fractol->julia_r < -2.0)
 		print_instructions(fractol);
-	if (fractol->julia_i >= 2.0 || fractol->julia_i <=-2.0)
+	if (fractol->julia_i >= 2.0 || fractol->julia_i <= -2.0)
 		print_instructions(fractol);
 }
 
-static int compare_arg(char *arg, char *str, char c, char number)
+static int	compare_arg(char *arg, char *str, char c, char number)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i])
@@ -45,13 +45,13 @@ static int compare_arg(char *arg, char *str, char c, char number)
 		i++;
 	}
 	if (!ft_strncmp(arg, str, ft_strlen(str) + 1))
-		return(1);
+		return (1);
 	else if (arg[1] == '\0' && (arg[0] == c || arg[0] == number))
 		return (1);
 	return (0);
 }
 
-static void get_set(t_fractol *fractol, char **argv)
+static void	get_set(t_fractol *fractol, char **argv)
 {
 	if (compare_arg(argv[1], "mandelbrot", 'm', '1'))
 		fractol->set = 1;
@@ -61,19 +61,19 @@ static void get_set(t_fractol *fractol, char **argv)
 		print_instructions(fractol);
 }
 
-static void pars_args(int argc, char **argv, t_fractol *fractol)
+static void	pars_args(int argc, char **argv, t_fractol *fractol)
 {
 	get_set(fractol, argv);
-	if (fractol->set != 2 && argc > 3)
+	if (fractol->set != 2 && argc > 2)
 		print_instructions(fractol);
-	else if (fractol->set == 2 && argc > 5)
+	else if (fractol->set == 2 && argc > 4)
 		print_instructions(fractol);
 	get_julia_settings(fractol, argc, argv);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_fractol fractol;
+	t_fractol	fractol;
 
 	if (argc < 2)
 		print_instructions(&fractol);

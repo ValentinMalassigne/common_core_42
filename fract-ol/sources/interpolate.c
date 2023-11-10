@@ -6,13 +6,13 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:32:08 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 16:22:57 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:44:22 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fractol.h"
 
-static int	interpolate(int start_color, int end_color, double fraction)
+static int	get_wave_color(int start_color, int end_color, double fraction)
 {
 	int	start_rgb[3];
 	int	end_rgb[3];
@@ -26,10 +26,11 @@ static int	interpolate(int start_color, int end_color, double fraction)
 	start_rgb[0] = (end_rgb[0] - start_rgb[0]) * fraction + start_rgb[0];
 	start_rgb[1] = (end_rgb[1] - start_rgb[1]) * fraction + start_rgb[1];
 	start_rgb[2] = (end_rgb[2] - start_rgb[2]) * fraction + start_rgb[2];
-	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
+	return ((0 << 24) + ((start_rgb[0]) << 16)
+		+ ((start_rgb[1]) << 8) + (start_rgb[2]));
 }
 
-void	set_color_mono(t_fractol *fractol, int color)
+void	set_color_waves(t_fractol *fractol, int color)
 {
 	int		i;
 	int		j;
@@ -37,7 +38,7 @@ void	set_color_mono(t_fractol *fractol, int color)
 	int		color1;
 	int		color2;
 
-	color1 = 0x000000;
+	color1 = 0;
 	color2 = color;
 	i = 0;
 	while (i < ITERATIONS_LIMIT)
@@ -46,36 +47,12 @@ void	set_color_mono(t_fractol *fractol, int color)
 		while (j < ITERATIONS_LIMIT / 2)
 		{
 			fraction = (double)j / (ITERATIONS_LIMIT / 2);
-			fractol->colors[i + j] = interpolate(color1, color2, fraction);
+			fractol->colors[i + j] = get_wave_color(color1, color2, fraction);
 			j++;
 		}
 		color1 = color2;
-		color2 = 0xFFFFFF;
+		color2 = (255 << 16) + (255 << 8) + (255);
 		i += j;
 	}
 	fractol->colors[ITERATIONS_LIMIT - 1] = 0;
-}
-
-void	set_color_multiple(t_fractol *fractol, int colors[4], int length)
-{
-	int	i;
-	int	j;
-	int x;
-	double fraction;
-
-	i = 0;
-	x = 0;
-	while (i < ITERATIONS_LIMIT)
-	{
-		j = 0;
-		while ((i + j) < ITERATIONS_LIMIT && j < (ITERATIONS_LIMIT / (length - 1)))
-		{
-			fraction = (double)j / (ITERATIONS_LIMIT / (length -1));
-			fractol->colors[i + j] = interpolate(colors[x], colors[x + 1], fraction);
-			j++;
-		}
-		x++;
-		i += j;
-	}
-	fractol->colors[ITERATIONS_LIMIT -1] = 0;
 }

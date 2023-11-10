@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:08:48 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/07 15:26:33 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:07:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_fractol
 	void	*win;
 	void	*img;
 	char	*data;
-	int		*colors;
 	int		set;
 	double	min_r;
 	double	max_r;
@@ -33,10 +32,12 @@ typedef struct s_fractol
 	double	max_i;
 	double	julia_r;
 	double	julia_i;
-	int		color_pattern;
-	int 	color;
-	
-} t_fractol;
+	int		*colors;
+	int		color;
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
+}	t_fractol;
 
 void	print_instructions(t_fractol *f);
 void	print_controls();
@@ -44,14 +45,7 @@ void	exit_and_free(int value, t_fractol *fractol);
 void	init_struct(t_fractol *fractol);
 double	ft_atof(char *str);
 void	init(t_fractol *fractol);
-void	shift_color(t_fractol *fractol);
-void	reinit_img(t_fractol *fractol);
-void	set_color_mono(t_fractol *fractol, int color);
-void	set_color_multiple(t_fractol *fractol, int colors[4], int length);
-int		get_percent_color(int color, double percent);
-void	set_color_zebra(t_fractol *fractol, int color);
-void	set_color_triad(t_fractol *fractol, int color);
-void	set_color_tetra(t_fractol *fractol, int color);
+void	set_color_waves(t_fractol *fractol, int color);
 void	render(t_fractol *fractol);
 int		end_fractol(t_fractol *mlx);
 int		key_event(int keycode, t_fractol *fractol);

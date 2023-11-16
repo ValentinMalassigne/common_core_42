@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:15:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/10 21:23:04 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:37:50 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	get_julia_settings(t_fractol *fractol, int argc, char **argv)
 	if (fractol->set != 2 || argc == 2)
 	{
 		fractol->julia_r = 0.285;
-		fractol->julia_i =  0.01;
+		fractol->julia_i = 0.01;
 		return ;
 	}
 	if (argc == 3)

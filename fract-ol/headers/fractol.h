@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:08:48 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/10 20:07:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:37:22 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ typedef struct s_fractol
 	double	max_i;
 	double	julia_r;
 	double	julia_i;
-	int		*colors;
 	int		color;
+	int		*colors;
 	int		pixel_bits;
 	int		line_bytes;
 	int		endian;
 }	t_fractol;
 
 void	print_instructions(t_fractol *f);
-void	print_controls();
+void	print_controls(void);
 void	exit_and_free(int value, t_fractol *fractol);
 void	init_struct(t_fractol *fractol);
 double	ft_atof(char *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:50:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/08 18:54:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:27:08 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,43 @@
 
 static void	zoom(t_fractol *fractol, double zoom)
 {
-	double	center_r;
-	double	center_i;
+	double	length_r;
+	double	length_i;
 
-	center_r = fractol->min_r - fractol->max_r;
-	center_i = fractol->max_i - fractol->min_i;
-	fractol->max_r = fractol->max_r + (center_r - zoom * center_r) / 2;
-	fractol->min_r = fractol->max_r + zoom * center_r;
-	fractol->min_i = fractol->min_i + (center_i - zoom * center_i) / 2;
-	fractol->max_i = fractol->min_i + zoom * center_i;
+	length_r = fractol->min_r - fractol->max_r;
+	length_i = fractol->max_i - fractol->min_i;
+	fractol->max_r = fractol->max_r + (length_r - zoom * length_r) / 2;
+	fractol->min_r = fractol->max_r + zoom * length_r;
+	fractol->min_i = fractol->min_i + (length_i - zoom * length_i) / 2;
+	fractol->max_i = fractol->min_i + zoom * length_i;
 }
 
 static void	move(t_fractol *fractol, double distance, char direction)
 {
-	double	center_r;
-	double	center_i;
+	double	length_r;
+	double	length_i;
 
-	center_r = fractol->max_r - fractol->min_r;
-	center_i = fractol->max_i - fractol->min_i;
+	length_r = fractol->max_r - fractol->min_r;
+	length_i = fractol->max_i - fractol->min_i;
 	if (direction == 'R')
 	{
-		fractol->min_r += center_r * distance;
-		fractol->max_r += center_r * distance;
+		fractol->min_r += length_r * distance;
+		fractol->max_r += length_r * distance;
 	}
 	else if (direction == 'L')
 	{
-		fractol->min_r -= center_r * distance;
-		fractol->max_r -= center_r * distance;
+		fractol->min_r -= length_r * distance;
+		fractol->max_r -= length_r * distance;
 	}
 	else if (direction == 'D')
 	{
-		fractol->min_i -= center_i * distance;
-		fractol->max_i -= center_i * distance;
+		fractol->min_i -= length_i * distance;
+		fractol->max_i -= length_i * distance;
 	}
 	else if (direction == 'U')
 	{
-		fractol->min_i += center_i * distance;
-		fractol->max_i += center_i * distance;
+		fractol->min_i += length_i * distance;
+		fractol->max_i += length_i * distance;
 	}
 }
 

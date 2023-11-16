@@ -21,7 +21,7 @@ SRC			=	fractol.c \
 				utils.c \
 				events.c \
 				render.c \
-				interpolate.c \
+				manage_colors.c \
 				instructions.c \
 				calculate_fractals.c
 

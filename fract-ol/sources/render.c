@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:24:17 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/10 21:09:17 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:54:55 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	calculate_fractal(t_fractol *fractol, double pr, double pi)
 
 	if (fractol->set == 1)
 		iterations = mandelbrot(pr, pi);
-	else if (fractol->set == 2)
+	else
 		iterations = julia(fractol, pr, pi);
 	return (iterations);
 }

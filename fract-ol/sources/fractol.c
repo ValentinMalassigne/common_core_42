@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:15:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/17 17:07:22 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:58:00 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
+	init_struct(&fractol);
 	if (argc < 2)
 		print_instructions(&fractol);
-	init_struct(&fractol);
 	pars_args(argc, argv, &fractol);
 	init(&fractol);
 	render(&fractol);

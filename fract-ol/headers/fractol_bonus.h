@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:08:48 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/17 17:25:05 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:48:13 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "fractol.h"
 
-/*int	mouse_event_bonus(int keycode, int x, int y, t_fractol *fractol);
-int	key_event_bonus(int keycode, t_fractol *fractol);*/
+int		mouse_event_bonus(int keycode, int x, int y, t_fractol *fractol);
+int		key_event_bonus(int keycode, t_fractol *fractol);
+void	print_controls_bonus(void);
 
 #endif

@@ -1,7 +1,7 @@
 NAME	= fractol
 BONUS	= fractol_bonus
 
-CC		= gcc
+CC		= cc
 CFLAGS	= -Werror -Wextra -Wall
 
 MLX_PATH	= minilibx-linux/
@@ -18,8 +18,6 @@ INC			=	-I ./headers/\
 
 SRC_PATH	=	sources/
 
-SRC_BONUS_PATH	=	bonus/
-
 SRC			=	fractol.c \
 				initializations.c \
 				utils.c \
@@ -30,17 +28,19 @@ SRC			=	fractol.c \
 				calculate_fractals.c
 
 SRC_BONUS	=	fractol_bonus.c \
-				initializations_bonus.c \
-				utils_bonus.c \
+				initializations.c \
+				utils.c \
+				events.c \
 				events_bonus.c \
-				render_bonus.c \
-				manage_colors_bonus.c \
+				render.c \
+				manage_colors.c \
+				instructions.c \
 				instructions_bonus.c \
-				calculate_fractals_bonus.c
+				calculate_fractals.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
-SRCS_BONUS	= $(addprefix $(SRC_BONUS_PATH), $(SRC_BONUS))
+SRCS_BONUS	= $(addprefix $(SRC_BONUS), $(SRC_BONUS))
 
 OBJ_PATH	= obj/
 OBJ			= $(SRC:.c=.o)
@@ -56,7 +56,7 @@ all: $(MLX) $(LIBFT) $(NAME)
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
-$(OBJ_BONUS_PATH)%.o: $(SRC_BONUS_PATH)%.c
+$(OBJ_BONUS_PATH)%.o: $(SRC_BONUS)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 $(OBJS): $(OBJ_PATH)

@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:50:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/17 17:24:52 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:43:25 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/fractol.h"
+#include "../headers/fractol_bonus.h"
 
 static void	zoom(t_fractol *fractol, double zoom)
 {
@@ -54,7 +54,7 @@ static void	move(t_fractol *fractol, double distance, char direction)
 	}
 }
 
-int	key_event(int keycode, t_fractol *fractol)
+int	key_event_bonus(int keycode, t_fractol *fractol)
 {
 	if (keycode == KEY_ESC)
 		end_fractol(fractol);
@@ -72,7 +72,7 @@ int	key_event(int keycode, t_fractol *fractol)
 	return (0);
 }
 
-int	mouse_event(int keycode, int x, int y, t_fractol *fractol)
+int	mouse_event_bonus(int keycode, int x, int y, t_fractol *fractol)
 {
 	if (keycode == MOUSE_WHEEL_UP)
 	{

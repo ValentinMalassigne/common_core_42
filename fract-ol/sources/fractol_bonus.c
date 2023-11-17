@@ -6,11 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:15:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/17 17:24:58 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:59:54 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/fractol.h"
+#include "../headers/fractol_bonus.h"
 
 static void	get_julia_settings(t_fractol *fractol, int argc, char **argv)
 {
@@ -75,15 +75,15 @@ int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
+	init_struct(&fractol);
 	if (argc < 2)
 		print_instructions(&fractol);
-	init_struct(&fractol);
 	pars_args(argc, argv, &fractol);
 	init(&fractol);
 	render(&fractol);
-	print_controls();
+	print_controls_bonus();
 	mlx_hook(fractol.win, EVENT_CLOSE_BTN, 0, end_fractol, &fractol);
-	mlx_key_hook(fractol.win, key_event, &fractol);
-	mlx_mouse_hook(fractol.win, mouse_event, &fractol);
+	mlx_key_hook(fractol.win, key_event_bonus, &fractol);
+	mlx_mouse_hook(fractol.win, mouse_event_bonus, &fractol);
 	mlx_loop(fractol.mlx);
 }

@@ -1,0 +1,10 @@
+Un programme classique n'execute qu'une seule sequence d'instruction.
+
+Un thread permet d'executer differentes sequences d'instructions simultanement.
+
+Les threads peuvent s'executer en parallel ou en sequentiel, cela depend du hardware et du soft.
+
+En parallel les instructions de plusieurs threads peuvent s'executer au meme instant.
+
+En sequentiel les instructions s'executent les unes apres les autres.
+

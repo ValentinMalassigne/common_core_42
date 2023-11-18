@@ -75,5 +75,3 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(OBJF)
 
 $(BONUS_OBJ_DIR)%.o: $(BONUS_SRC_DIR)%.c $(BONUS_OBJF)
 	cc $(CFLAGS) -I. -c $< -o $@
-
-.SILENT:

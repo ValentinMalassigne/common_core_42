@@ -1,0 +1,15 @@
+TODO :
+
+Mauvais input avec la commande 
+./pipex infile "laaa -l" "wc -l" outfile
+
+Out put de la merde en mode bonus
+
+
+
+Erreurs connues : 
+ - 
+ OK en Normal
+ ./pipex infile "ls -l" "echo" outfile
+
+ - ./pipex infile "touch -t 202003081047.30" "echo" outfile

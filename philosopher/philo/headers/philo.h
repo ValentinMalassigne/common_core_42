@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:18:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/20 16:50:10 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:52:37 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct s_infos {
 } t_infos;
 
 int	ft_atoi(char *str);
+int	ft_is_numeric(char *str);
 
 #endif

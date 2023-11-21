@@ -8,3 +8,4 @@ En parallel les instructions de plusieurs threads peuvent s'executer au meme ins
 
 En sequentiel les instructions s'executent les unes apres les autres.
 
+valgrind --tool=helgrind

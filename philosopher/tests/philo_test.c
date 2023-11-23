@@ -37,20 +37,20 @@ int main(void)
 	pthread_mutex_t	*mutex_list;
 	t_params		thread_params;
 	int 			i;
-	int				philo_number;
+	int				philo_count;
 
-	philo_number = 2;
+	philo_count = 2;
 
-	mutex_list = malloc(philo_number * sizeof(pthread_mutex_t));
-	philo_list = malloc(philo_number * sizeof(t_philo));
-	thread_list = malloc(philo_number * sizeof(pthread_t));
+	mutex_list = malloc(philo_count * sizeof(pthread_mutex_t));
+	philo_list = malloc(philo_count * sizeof(t_philo));
+	thread_list = malloc(philo_count * sizeof(pthread_t));
 	if (!mutex_list || !philo_list || !thread_list)
 	{
 		printf("malloc error\n");
 		return (1);
 	}
 	i = 0;
-	while (i < philo_number)
+	while (i < philo_count)
 	{
 		pthread_mutex_init(mutex_list + i, NULL);
 		philo_list[i].number = i + 1;
@@ -62,7 +62,7 @@ int main(void)
 	thread_params.philo_list = philo_list;
 
 	i = 0;
-	while (i < philo_number)
+	while (i < philo_count)
 	{
 		thread_params.number = i;
 		printf("thread number %d\n",thread_params.number);
@@ -72,13 +72,13 @@ int main(void)
 	}
 
 	i = 0;
-	while (i < philo_number)
+	while (i < philo_count)
 	{
 		pthread_join(thread_list[i], NULL);
 		i++;
 	}
 	i = 0;
-	while (i < philo_number)
+	while (i < philo_count)
 	{
 		pthread_mutex_destroy((mutex_list + 0));
 		i++;

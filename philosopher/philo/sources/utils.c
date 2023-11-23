@@ -6,9 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:17:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/21 14:53:34 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:34:08 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../headers/philo.h"
 
 int	ft_atoi(char *str)
 {
@@ -41,4 +43,12 @@ int	ft_is_numeric(char *str)
 		str++;
 	}
 	return (1);
+}
+
+long	get_ms_since_epoch(void)
+{
+	struct timeval now;
+
+	gettimeofday(&now, NULL);
+	return (now.tv_sec * 1000 + now.tv_usec / 1000);
 }

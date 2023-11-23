@@ -8,7 +8,12 @@ SRC_DIR = sources
 OBJ_DIR = objects
 
 SRC_FILES = philo \
-			utils
+			utils \
+			init \
+			manage_threads \
+			parsing \
+			routine \
+			clear \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))

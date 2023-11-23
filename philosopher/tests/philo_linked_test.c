@@ -2,28 +2,23 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/time.h>
 
 typedef struct s_philo {
 	int				number;
-	int				fork_used;
 	pthread_mutex_t	*mutex;
 	struct s_philo	*next;
 	struct s_philo	*prev;
 } t_philo;
 
-// Il doit eat, wait 2 secondes, rendre les couverts
-// void	*philo_routine(void *params)
-// {
-// 	t_philo	*philo = (t_philo *) params;
-
-// 	pthread_mutex_lock(&(philo->mutex));
-// 	printf("Philo %d started eating\n", philo->number);
-// 	usleep(2000000);
-// 	printf("Philo %d finished eating\n", philo->number);
-// 	pthread_mutex_unlock(&(philo->mutex));
-
-// 	return NULL;
-// }
+void printList(t_philo *head) {
+    printf("Double Linked List: ");
+    while (head != NULL) {
+        printf("philo number %d ", head->number);
+        head = head->next;
+    }
+    printf("\n");
+}
 
 t_philo	*last_philo(t_philo *lst)
 {
@@ -59,94 +54,104 @@ t_philo	*new_philo_node(int number)
 	new_philo = malloc(sizeof(t_philo));
 	if (!mutex || !new_philo)
 		return (NULL);
+	pthread_mutex_init(mutex, NULL);
 	new_philo->number = number;
 	new_philo->mutex = mutex;
-	new_philo->fork_used = 0;
 	new_philo->next = NULL;
 	new_philo->prev = NULL;
 	return (new_philo);
 }
 
-void printList(t_philo *head) {
-    printf("Double Linked List: ");
-    while (head != NULL) {
-        printf("philo number %d ", head->number);
-        head = head->next;
-    }
-    printf("\n");
+
+t_philo	*set_up_philo_list(t_philo *philo_head, int philo_count)
+{
+	t_philo			*temp_philo;
+
+	int	i;
+	i = 1;
+	while (i <= philo_count)
+	{
+		temp_philo = new_philo_node(i);
+		if (!temp_philo)
+			return (NULL);
+		add_node_back(&philo_head, temp_philo);
+		i++;
+	}
+	temp_philo = last_philo(philo_head);
+	temp_philo->next = philo_head;
+	philo_head->prev = temp_philo;
+	return (philo_head);
+}
+
+long	get_ms_since_epoch(void)
+{
+	struct timeval now;
+
+	gettimeofday(&now, NULL);
+	return (now.tv_sec * 1000 + now.tv_usec / 1000);
+}
+
+// Il doit eat, wait 2 secondes, rendre les couverts
+void	*philo_routine(void *params)
+{
+	t_philo	*philo = (t_philo *) params;
+	t_philo	*right_philo = philo->next;
+
+	pthread_mutex_lock(philo->mutex);
+	printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
+	pthread_mutex_lock(right_philo->mutex);	
+	printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
+
+	printf("%ld %d is eating\n", get_ms_since_epoch(), philo->number);
+	usleep(1000000);
+	printf("%ld %d finished eating\n", get_ms_since_epoch(), philo->number);
+	
+	pthread_mutex_unlock(philo->mutex);
+	pthread_mutex_unlock(right_philo->mutex);
+	return NULL;
 }
 
 int main(void)
 {
 	pthread_t		*thread_list;
 	t_philo			*philo_head;
-	t_philo			*temp_philo;
 	int 			i;
-	int				philo_number;
+	int				philo_count;
 
-	philo_number = 10;
+	philo_count = 10;
 	philo_head = NULL;
 
-	i = 1;
-	while (i <= philo_number)
+	philo_head = set_up_philo_list(philo_head, philo_count);
+
+	thread_list = malloc(philo_count * sizeof(pthread_t));
+	if (!philo_head || !thread_list)
 	{
-		add_node_back(&philo_head, new_philo_node(i));
-		i++;
+		printf("malloc error\n");
+		return (1);
 	}
+
 	i = 0;
-	while (i < philo_number)
+	while (i < philo_count)
 	{
-		printf("philo nb %d\n", philo_head->number);
-		if (philo_head->next)
-			philo_head = philo_head->next; 
+		if (pthread_create((thread_list + i), NULL, &philo_routine, (void *) philo_head) != 0)
+			return (1);
+		philo_head = philo_head->next;
 		i++;
 	}
-	//ATTENTION A NE PAS ETRE ARRIVE A UN NULL AVANT DE CALL CA
-	philo_head = philo_head->prev;
-	printf("philo nb %d\n", philo_head->number);
+
+	i = 0;
+	while (i < philo_count)
+	{
+		pthread_join(thread_list[i], NULL);
+		i++;
+	}
+
+	i = 0;
+	while (i < philo_count)
+	{
+		pthread_mutex_destroy(philo_head->mutex);
+		philo_head = philo_head->next;
+		i++;
+	}
 	return (0);
-
-
-
-
-
-
-	// thread_list = malloc(philo_number * sizeof(pthread_t));
-	// if (!mutex_list || !philo_list || !thread_list)
-	// {
-	// 	printf("malloc error\n");
-	// 	return (1);
-	// }
-	// i = 0;
-	// while (i < philo_number)
-	// {
-	// 	pthread_mutex_init(mutex_list + i, NULL);
-	// 	philo_list[i].number = i + 1;
-	// 	philo_list[i].fork_used = 0; 
-	// 	philo_list[i].mutex = mutex_list[i];
-	// 	i++;
-	// }
-
-	// i = 0;
-	// while (i < philo_number)
-	// {
-	// 	thread_params.number = i;
-	// 	printf("thread number %d\n",thread_params.number);
-	// 	if (pthread_create((thread_list + i), NULL, &philo_routine, (void *) &thread_params) != 0)
-	// 		return (1);
-	// 	i++;
-	// }
-
-	// i = 0;
-	// while (i < philo_number)
-	// {
-	// 	pthread_join(thread_list[i], NULL);
-	// 	i++;
-	// }
-	// i = 0;
-	// while (i < philo_number)
-	// {
-	// 	pthread_mutex_destroy((mutex_list + 0));
-	// 	i++;
-	// }
 }

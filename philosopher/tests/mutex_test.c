@@ -12,7 +12,7 @@ void	*safe_routine(void *params)
 {
 	t_struct *struct_params = (t_struct *) params;
 	int i = 0;
-	while (i++ < 100000)
+	while (i++ < 1000000)
 	{
 		pthread_mutex_lock(&(struct_params->mutex));
 		struct_params->count++;
@@ -26,7 +26,7 @@ void	*safe_routine2(void *params)
 {
 	t_struct *struct_params = (t_struct *) params;
 	int i = 0;
-	while (i++ < 100000)
+	while (i++ < 1000000)
 	{
 		pthread_mutex_lock(&(struct_params->mutex));
 		struct_params->count++;
@@ -40,7 +40,7 @@ void	*routine_with_data_race(void *params)
 {
 	int i = 0;
 	t_struct *params_struct = (t_struct *) params; 
-	while (i++ < 100000)
+	while (i++ < 1000000)
 		params_struct->count++;
 	return NULL;
 }
@@ -62,6 +62,7 @@ int main()
 		return (1);
 	if(pthread_create(&p2, NULL, &safe_routine, (void *) &params) != 0)
 		return (1);
+	pthread_mutex_destroy(&mutex);
 	if(pthread_create(&p3, NULL, &safe_routine2, (void *) &params) != 0)
 		return (1);
 	pthread_join(p1,NULL);

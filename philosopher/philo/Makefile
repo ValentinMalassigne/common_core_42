@@ -23,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	cc $(CFLAGS) $(LINKED_LIBRARY) $(OBJS) -o $(NAME)
 
-$(OBJS): $(OBJ_DIR)
+$(OBJS): | $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	cc $(CFLAGS) -I. -c -o $@ $<

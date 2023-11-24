@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:18:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/23 20:32:25 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/24 20:25:02 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,22 @@ typedef struct s_infos {
 
 typedef struct s_philo {
 	int				number;
+	int				meal_count;
+	long			last_meal;
 	struct s_infos	infos;
 	pthread_mutex_t	*mutex;
 	struct s_philo	*next;
-	struct s_philo	*prev;
 } t_philo;
 
 int		ft_atoi(char *str);
 int		ft_is_numeric(char *str);
 int		parse_inputs(int argc, char **argv, t_infos *infos, int *philo_count);
 int		manage_threads(t_philo *philo_head, int philo_count);
+int		end_of_philo(t_philo *head, int philo_count);
 void	*philo_routine(void *params);
 long	get_ms_since_epoch(void);
 void	clear_mutex(t_philo *philo_head, int philo_count);
+void	free_list(t_philo *head, int philo_count);
 t_philo	*set_up_philo_list(t_philo **philo_head, t_infos infos, int philo_count);
 
 #endif

@@ -4,8 +4,9 @@
 
 void	*detached_hello(void *param)
 {
-	while(1)
+	//while(1)
 		printf("Detached Hello\n");
+	return (0);
 }
 
 void	*hello(void *param)
@@ -22,9 +23,11 @@ int main(void)
 
 	pthread_create(&thread1, NULL, hello, (void *) &message);
 	pthread_create(&thread2, NULL, detached_hello, NULL);
-	pthread_detach(thread2);
-
-	//pthread_join(thread1, NULL);
+	pthread_detach(thread1);
+// pthread_detach(thread2);
+	// pthread_join(thread1, NULL);
+	
+	pthread_join(thread2, NULL);
 	printf("End of main\n");
 	return (0);
 }

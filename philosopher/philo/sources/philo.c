@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:20:29 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/23 20:34:47 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:50:29 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int argc, char **argv)
 	if (!manage_threads(philo_head, philo_count))
 		return (0);
 	clear_mutex(philo_head, philo_count);
+	free_list(philo_head, philo_count);
 	return(0);
 }

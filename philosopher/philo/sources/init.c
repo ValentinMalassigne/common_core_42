@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:16:05 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/23 20:27:13 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:34:34 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	add_node_back(t_philo **head, t_philo *new_philo)
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new_philo;
-		new_philo->prev = temp;
 	}
 }
 
@@ -50,8 +49,9 @@ static t_philo	*new_philo_node(int number, t_infos infos)
 	new_philo->number = number;
 	new_philo->mutex = mutex;
 	new_philo->infos = infos;
+	new_philo->meal_count = 0;
+	new_philo->last_meal = get_ms_since_epoch();
 	new_philo->next = NULL;
-	new_philo->prev = NULL;
 	return (new_philo);
 }
 
@@ -72,6 +72,5 @@ t_philo	*set_up_philo_list(t_philo **philo_head, t_infos infos, int philo_count)
 	}
 	temp_philo = last_philo(*philo_head);
 	temp_philo->next = *philo_head;
-	(*philo_head)->prev = temp_philo;
 	return (*philo_head);
 }

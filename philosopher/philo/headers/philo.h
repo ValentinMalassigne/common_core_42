@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:18:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/24 20:25:02 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:30:41 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_infos {
 	int	time_to_eat;
 	int	time_to_sleep;
 	int max_eat;
+	int	*philo_running;
 } t_infos;
 
 typedef struct s_philo {

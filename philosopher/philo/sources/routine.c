@@ -6,11 +6,23 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:13:03 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/25 16:20:36 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:03:32 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
+
+void	safe_sleep(t_philo *philo, long us_to_sleep)
+{
+	while (us_to_sleep > 0)
+	{
+		usleep(1000);
+		if (!*(philo->infos.philo_running))
+			return ;
+		us_to_sleep -= 1000;
+	}
+	return ;
+}
 
 void	*philo_routine(void *params)
 {
@@ -26,10 +38,24 @@ void	*philo_routine(void *params)
 			if (!*(philo->infos.philo_running))
 				return NULL;
 			pthread_mutex_lock(philo->mutex);
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(philo->mutex);
+				return NULL;
+			}
 			printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
-			// if (!*(philo->infos.philo_running))
-			// 	break;
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(philo->mutex);
+				return NULL;
+			}
 			pthread_mutex_lock(right_thparams->mutex);
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(philo->mutex);
+				pthread_mutex_unlock(right_thparams->mutex);
+				return NULL;
+			}
 			printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
 		}
 		else
@@ -37,25 +63,44 @@ void	*philo_routine(void *params)
 			if (!*(philo->infos.philo_running))
 				return NULL;
 			pthread_mutex_lock(right_thparams->mutex);
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(right_thparams->mutex);
+				return NULL;
+			}
 			printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
-			// if (!*(philo->infos.philo_running))
-			// 	break;
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(right_thparams->mutex);
+				return NULL;
+			}
 			pthread_mutex_lock(philo->mutex);
+			if (!*(philo->infos.philo_running))
+			{
+				pthread_mutex_unlock(philo->mutex);
+				pthread_mutex_unlock(right_thparams->mutex);
+				return NULL;
+			}
 			printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);			
 		}
 		philo->last_meal = get_ms_since_epoch();
 		if (*(philo->infos.philo_running))
 		{
 			printf("%ld %d is eating\n", get_ms_since_epoch(), philo->number);
-			usleep(philo->infos.time_to_eat * 1000);
+			safe_sleep(philo, philo->infos.time_to_eat * 1000);
 			philo->meal_count++;
+			pthread_mutex_unlock(philo->mutex);
+			pthread_mutex_unlock(right_thparams->mutex);
+		}
+		else
+		{
 			pthread_mutex_unlock(philo->mutex);
 			pthread_mutex_unlock(right_thparams->mutex);
 		}
 		if (!*(philo->infos.philo_running))
 			return NULL;
 		printf("%ld %d is sleeping\n", get_ms_since_epoch(), philo->number);
-		usleep(philo->infos.time_to_sleep * 1000);
+		safe_sleep(philo, philo->infos.time_to_sleep * 1000);
 		if (!*(philo->infos.philo_running))
 			return NULL;
 		printf("%ld %d is thinking\n", get_ms_since_epoch(), philo->number);

@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 20:00:45 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/30 10:07:45 by vmalassi         ###   ########.fr       */
+/*   Created: 2023/11/20 15:20:29 by vmalassi          #+#    #+#             */
+/*   Updated: 2023/11/30 10:07:33 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
 
-void	clear_mutex(t_philo *philo_head, int philo_count)
+int	main(int argc, char **argv)
 {
-	int	i;
+	t_infos 	infos;
+	int			philo_count;
+	t_philo		*philo_head;
 
-	i = 0;
-	while (i < philo_count)
-	{
-		pthread_mutex_destroy(philo_head->mutex);
-		philo_head = philo_head->next;
-		i++;
-	}
-}
-
-void	free_list(t_philo *head, int philo_count)
-{
-	int		i;
-	t_philo *temp;
-
-	free(head->infos.philo_running);
-	i = 0;
-	while (i < philo_count)
-	{
-		temp = head;
-		head = head->next;
-		free(temp->mutex);
-		free(temp);
-		i++;
-	}
+	if (!parse_inputs(argc, argv, &infos, &philo_count))
+		return (0);
+	if (!set_up_philo_list(&philo_head, infos, philo_count))
+		return (0);
+	if (!manage_threads(philo_head, philo_count))
+		return (0);
+	clear_mutex(philo_head, philo_count);
+	free_list(philo_head, philo_count);
+	return(0);
 }

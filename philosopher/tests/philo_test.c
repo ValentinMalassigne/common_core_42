@@ -6,7 +6,7 @@
 typedef struct s_philo {
 	int	number;
 	int	fork_used;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	fork;
 } t_philo;
 
 typedef struct s_params {
@@ -21,11 +21,11 @@ void	*philo_routine(void *params)
 	t_philo 	*philo = thread_params->philo_list;
 	printf("thread id : %d\n",thread_params->number);
 
-	pthread_mutex_lock(&(philo->mutex));
+	pthread_mutex_lock(&(philo->fork));
 	printf("Philo %d started eating\n", philo->number);
 	usleep(2000000);
 	printf("Philo %d finished eating\n", philo->number);
-	pthread_mutex_unlock(&(philo->mutex));
+	pthread_mutex_unlock(&(philo->fork));
 
 	return NULL;
 }
@@ -55,7 +55,7 @@ int main(void)
 		pthread_mutex_init(mutex_list + i, NULL);
 		philo_list[i].number = i + 1;
 		philo_list[i].fork_used = 0; 
-		philo_list[i].mutex = mutex_list[i];
+		philo_list[i].fork = mutex_list[i];
 		i++;
 	}
 

@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:18:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/25 15:30:41 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:10:20 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo {
 	int				meal_count;
 	long			last_meal;
 	struct s_infos	infos;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*fork;
 	struct s_philo	*next;
 } t_philo;
 

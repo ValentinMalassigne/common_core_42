@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:16:05 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/30 10:01:04 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:10:20 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ static void	add_node_back(t_philo **head, t_philo *new_philo)
 static t_philo	*new_philo_node(int number, t_infos infos, int *philo_running)
 {
 	t_philo			*new_philo;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*fork;
 
-	mutex = malloc(sizeof(pthread_mutex_t));
+	fork = malloc(sizeof(pthread_mutex_t));
 	new_philo = malloc(sizeof(t_philo));
-	if (!mutex || !new_philo)
+	if (!fork || !new_philo)
 		return (NULL);
-	pthread_mutex_init(mutex, NULL);
+	pthread_mutex_init(fork, NULL);
 	new_philo->number = number;
-	new_philo->mutex = mutex;
+	new_philo->fork = fork;
 	new_philo->infos = infos;
 	new_philo->meal_count = 0;
 	new_philo->last_meal = get_ms_since_epoch();

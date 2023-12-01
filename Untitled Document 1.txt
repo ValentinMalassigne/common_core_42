@@ -21,8 +21,7 @@ Semble OK
 ./philo 4 500 200 1.2 : Argument invalide
 OK
 
-./philo 4 0 200 200 : Argument invalide (a verif les consignes)
-PAS OK, ne se termine jamais
+./philo 4 0 200 200 : Meurt sous 10 ms
 
 ./philo 4 -500 200 200 : argument invalide
 OK
@@ -34,7 +33,25 @@ Semble OK
 Semble OK
 
 ./philo 4 214748364732 200 200 : arg invalide ?? a verifier ??
-
+a verif consignes
 
 ./philo 4 200 210 200 : un philo meurt, afficher mort avant 210 ms
 Semble OK
+
+//////////////
+pb a resoudre :
+
+./philo 5 800 200 200 : personne ne meurt
+meurt au bout d'un moment
+=> optimiser
+
+il peut y avoir mort et eating en meme temps
+=> mutex commun eatcheck
+	=> tout est en pause le temps de la verif
+
+les print se melangent
+=> mutex commun writing
+
+=> verifier le -fsanitize=thread
+
+=> changer le display du timestamp

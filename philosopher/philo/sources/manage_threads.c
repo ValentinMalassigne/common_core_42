@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:36:52 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/30 10:02:04 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/01 09:46:25 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	join_threads(pthread_t * thread_list, int philo_count)
 static int create_threads(pthread_t *thread_list, t_philo *philo_head, int philo_count, int *philo_running)
 {
 	int	i;
+
 	i = 0;
 	while (i < philo_count)
 	{

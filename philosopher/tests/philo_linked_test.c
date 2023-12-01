@@ -6,7 +6,7 @@
 
 typedef struct s_philo {
 	int				number;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*fork;
 	struct s_philo	*next;
 	struct s_philo	*prev;
 } t_philo;
@@ -48,15 +48,15 @@ void	add_node_back(t_philo **head, t_philo *new_philo)
 t_philo	*new_philo_node(int number)
 {
 	t_philo			*new_philo;
-	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*fork;
 
-	mutex = malloc(sizeof(pthread_mutex_t));
+	fork = malloc(sizeof(pthread_mutex_t));
 	new_philo = malloc(sizeof(t_philo));
-	if (!mutex || !new_philo)
+	if (!fork || !new_philo)
 		return (NULL);
-	pthread_mutex_init(mutex, NULL);
+	pthread_mutex_init(fork, NULL);
 	new_philo->number = number;
-	new_philo->mutex = mutex;
+	new_philo->fork = fork;
 	new_philo->next = NULL;
 	new_philo->prev = NULL;
 	return (new_philo);
@@ -97,17 +97,17 @@ void	*philo_routine(void *params)
 	t_philo	*philo = (t_philo *) params;
 	t_philo	*right_philo = philo->next;
 
-	pthread_mutex_lock(philo->mutex);
+	pthread_mutex_lock(philo->fork);
 	printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
-	pthread_mutex_lock(right_philo->mutex);	
+	pthread_mutex_lock(right_philo->fork);	
 	printf("%ld %d has taken a fork\n", get_ms_since_epoch(), philo->number);
 
 	printf("%ld %d is eating\n", get_ms_since_epoch(), philo->number);
 	usleep(1000000);
 	printf("%ld %d finished eating\n", get_ms_since_epoch(), philo->number);
 	
-	pthread_mutex_unlock(philo->mutex);
-	pthread_mutex_unlock(right_philo->mutex);
+	pthread_mutex_unlock(philo->fork);
+	pthread_mutex_unlock(right_philo->fork);
 	return NULL;
 }
 
@@ -149,7 +149,7 @@ int main(void)
 	i = 0;
 	while (i < philo_count)
 	{
-		pthread_mutex_destroy(philo_head->mutex);
+		pthread_mutex_destroy(philo_head->fork);
 		philo_head = philo_head->next;
 		i++;
 	}

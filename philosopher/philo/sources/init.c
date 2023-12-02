@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:16:05 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/01 12:10:20 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/02 10:59:51 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,40 @@ static t_philo	*new_philo_node(int number, t_infos infos, int *philo_running)
 	return (new_philo);
 }
 
+static int	init_infos_and_running(t_infos *infos, int *philo_running)
+{
+	if (!philo_running)
+		return (0);
+	infos->checking_death = malloc(sizeof(pthread_mutex_t));
+	if (!infos->checking_death)
+	{
+		free(philo_running);
+		return (0);
+	}
+	infos->lock_print = malloc(sizeof(pthread_mutex_t));
+	if (!infos->lock_print)
+	{
+		free(philo_running);
+		free(infos->checking_death);
+		return (0);
+	}
+	*philo_running = 1;
+	infos->start_time = get_ms_since_epoch();
+	pthread_mutex_init(infos->checking_death, NULL);
+	pthread_mutex_init(infos->lock_print, NULL);
+	return (1);
+}
+
 t_philo	*set_up_philo_list(t_philo **philo_head, t_infos infos, int philo_count)
 {
 	t_philo	*temp_philo;
 	int		*philo_running;
+	int		i;
 
 	*philo_head = NULL;
 	philo_running = malloc(sizeof(int));
-	if (!philo_running)
-	{
-		printf("malloc error\n");
+	if (!init_infos_and_running(&infos, philo_running))
 		return (NULL);
-	}
-	*philo_running = 1;
-	int	i;
 	i = 1;
 	while (i <= philo_count)
 	{

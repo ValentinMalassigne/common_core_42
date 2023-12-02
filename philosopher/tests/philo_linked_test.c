@@ -83,7 +83,7 @@ t_philo	*set_up_philo_list(t_philo *philo_head, int philo_count)
 	return (philo_head);
 }
 
-long	get_ms_since_epoch(void)
+long long	get_ms_since_epoch(void)
 {
 	struct timeval now;
 

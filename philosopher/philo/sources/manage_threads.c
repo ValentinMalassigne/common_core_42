@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:36:52 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/01 09:46:25 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:05:24 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	manage_threads(t_philo *philo_head, int philo_count)
 {
 	pthread_t	*thread_list;
 	int			*philo_running;
+	int 		res;
 
 	thread_list = malloc(philo_count * sizeof(pthread_t));
 	if (!thread_list)
@@ -55,7 +56,10 @@ int	manage_threads(t_philo *philo_head, int philo_count)
 	philo_running = philo_head->infos.philo_running;
 	if (!create_threads(thread_list, philo_head, philo_count, philo_running))
 		return (0);
-	*philo_running = end_of_philo(philo_head, philo_count);
+	res = end_of_philo(philo_head, philo_count);
+	pthread_mutex_lock(philo_head->infos.lock_print);
+	*philo_running = res;
+	pthread_mutex_unlock(philo_head->infos.lock_print);
 	join_threads(thread_list, philo_count);
 	free(thread_list);
 	return (1);

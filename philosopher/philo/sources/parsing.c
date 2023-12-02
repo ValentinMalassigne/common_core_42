@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:11:42 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/01 11:42:22 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:00:03 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int	parse_inputs(int argc, char **argv, t_infos *infos, int *philo_count)
 		infos->time_to_eat = ft_atoi(argv[3]);
 		infos->time_to_sleep = ft_atoi(argv[4]);
 		infos->philo_running = NULL;
+		infos->lock_print = NULL;
+		infos->checking_death = NULL;
 		if (argc == 6)
 			infos->max_eat = ft_atoi(argv[5]);
 		else

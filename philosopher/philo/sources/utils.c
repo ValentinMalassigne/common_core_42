@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:17:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/11/23 20:34:08 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:27:25 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,18 @@ int	ft_is_numeric(char *str)
 	return (1);
 }
 
-long	get_ms_since_epoch(void)
+long long	get_ms_since_epoch(void)
 {
 	struct timeval now;
 
 	gettimeofday(&now, NULL);
 	return (now.tv_sec * 1000 + now.tv_usec / 1000);
+}
+
+void	print_message(t_philo philo, char *msg)
+{
+	pthread_mutex_lock(philo.infos.lock_print);
+	if (*(philo.infos.philo_running))
+		printf("%07lld %d %s\n",get_ms_since_epoch() - philo.infos.start_time, philo.number, msg);
+	pthread_mutex_unlock(philo.infos.lock_print);
 }

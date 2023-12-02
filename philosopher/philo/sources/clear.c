@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:00:45 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/01 12:10:20 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/02 10:59:37 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	free_list(t_philo *head, int philo_count)
 	t_philo *temp;
 
 	free(head->infos.philo_running);
+	free(head->infos.lock_print);
+	free(head->infos.checking_death);
 	i = 0;
 	while (i < philo_count)
 	{

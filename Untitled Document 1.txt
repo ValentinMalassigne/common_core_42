@@ -38,20 +38,18 @@ a verif consignes
 ./philo 4 200 210 200 : un philo meurt, afficher mort avant 210 ms
 Semble OK
 
+=> verifier le -fsanitize=thread
+Semble OK, a reverif apres chaque modif
+
+il peut y avoir mort et eating en meme temps
+Semble OK
+
+les print se melangent	=> mutex commun writing
+Semble OK
+
 //////////////
 pb a resoudre :
 
 ./philo 5 800 200 200 : personne ne meurt
 meurt au bout d'un moment
 => optimiser
-
-il peut y avoir mort et eating en meme temps
-=> mutex commun eatcheck
-	=> tout est en pause le temps de la verif
-
-les print se melangent
-=> mutex commun writing
-
-=> verifier le -fsanitize=thread
-
-=> changer le display du timestamp

@@ -7,10 +7,10 @@ On a bien un philo qui meurt mais le programme ne se termine pas
 Semble OK
 
 ./philo 5 800 200 200 : personne ne meurt
-meurt au bout d'un moment
+Semble OK
 
 ./philo 5 800 200 200 7 : se finit au bout de 7 repas
-a voir quand le precedent sera OK
+Semble OK
 
 ./philo 4 410 200 200 : personne ne meurt
 Semble OK
@@ -22,6 +22,7 @@ Semble OK
 OK
 
 ./philo 4 0 200 200 : Meurt sous 10 ms
+OK
 
 ./philo 4 -500 200 200 : argument invalide
 OK
@@ -32,8 +33,8 @@ Semble OK
 ./philo 4 2147483647 200 200 : personne ne meurt
 Semble OK
 
-./philo 4 214748364732 200 200 : arg invalide ?? a verifier ??
-a verif consignes
+./philo 4 214748364732 200 200 : arg invalide
+OK
 
 ./philo 4 200 210 200 : un philo meurt, afficher mort avant 210 ms
 Semble OK
@@ -46,10 +47,3 @@ Semble OK
 
 les print se melangent	=> mutex commun writing
 Semble OK
-
-//////////////
-pb a resoudre :
-
-./philo 5 800 200 200 : personne ne meurt
-meurt au bout d'un moment
-=> optimiser

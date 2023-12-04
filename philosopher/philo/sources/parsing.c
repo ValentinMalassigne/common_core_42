@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:11:42 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/02 11:00:03 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:41:57 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,23 @@ static int	int_overflow(char *str)
 	return (0);
 }
 
+static int	check_num_and_overflow(char *str)
+{
+	if (!ft_is_numeric(str))
+	{
+		printf("Error : Wrong argument format\n");
+		printf("All arguments must be positive integers\n");
+		return (0);
+	}
+	else if (int_overflow(str))
+	{
+		printf("Error : Wrong argument format\n");
+		printf("Arguments must not overflow an int\n");
+		return (0);
+	}
+	return (1);
+}
+
 static int	verify_inputs(int argc, char **argv)
 {
 	int	i;
@@ -53,12 +70,8 @@ static int	verify_inputs(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			if (!ft_is_numeric(argv[i]) || int_overflow(argv[i]))
-			{
-				printf("Error : Wrong argument format\n");
-				printf("All arguments must be positive integers\n");
+			if (!check_num_and_overflow(argv[i]))
 				return (0);
-			}
 			i++;
 		}
 	}
@@ -74,12 +87,12 @@ static int	verify_inputs(int argc, char **argv)
 	return (1);
 }
 
-int	parse_inputs(int argc, char **argv, t_infos *infos, int *philo_count)
+int	parse_input(int argc, char **argv, t_infos *infos, int *p_count)
 {
 	if (verify_inputs(argc, argv))
 	{
-		*philo_count = ft_atoi(argv[1]);
-		if (!*philo_count)
+		*p_count = ft_atoi(argv[1]);
+		if (!*p_count)
 		{
 			printf("Error : Invalid number of philosopers\n");
 			return (0);

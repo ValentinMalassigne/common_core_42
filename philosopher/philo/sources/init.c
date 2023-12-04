@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:16:05 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/02 10:59:51 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:18:40 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_philo	*last_philo(t_philo *lst)
 
 static void	add_node_back(t_philo **head, t_philo *new_philo)
 {
-	t_philo *temp;
+	t_philo	*temp;
 
 	if (*head == NULL)
 		*head = new_philo;
@@ -80,7 +80,7 @@ static int	init_infos_and_running(t_infos *infos, int *philo_running)
 	return (1);
 }
 
-t_philo	*set_up_philo_list(t_philo **philo_head, t_infos infos, int philo_count)
+t_philo	*set_up_p_list(t_philo **philo_head, t_infos infos, int p_count)
 {
 	t_philo	*temp_philo;
 	int		*philo_running;
@@ -91,7 +91,7 @@ t_philo	*set_up_philo_list(t_philo **philo_head, t_infos infos, int philo_count)
 	if (!init_infos_and_running(&infos, philo_running))
 		return (NULL);
 	i = 1;
-	while (i <= philo_count)
+	while (i <= p_count)
 	{
 		temp_philo = new_philo_node(i, infos, philo_running);
 		if (!temp_philo)

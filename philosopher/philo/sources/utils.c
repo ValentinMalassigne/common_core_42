@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:17:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2023/12/02 11:27:25 by vmalassi         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:19:35 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(char *str)
 
 int	ft_is_numeric(char *str)
 {
-	while(*str)
+	while (*str)
 	{
 		if (*str < 48 || *str > 57)
 			return (0);
@@ -47,7 +47,7 @@ int	ft_is_numeric(char *str)
 
 long long	get_ms_since_epoch(void)
 {
-	struct timeval now;
+	struct timeval	now;
 
 	gettimeofday(&now, NULL);
 	return (now.tv_sec * 1000 + now.tv_usec / 1000);
@@ -57,6 +57,7 @@ void	print_message(t_philo philo, char *msg)
 {
 	pthread_mutex_lock(philo.infos.lock_print);
 	if (*(philo.infos.philo_running))
-		printf("%07lld %d %s\n",get_ms_since_epoch() - philo.infos.start_time, philo.number, msg);
+		printf("%07lld %d %s\n", get_ms_since_epoch() - philo.infos.start_time,
+			philo.number, msg);
 	pthread_mutex_unlock(philo.infos.lock_print);
 }

@@ -56,8 +56,7 @@ SRC		= 	main.c \
 			utils/exit.c \
 			utils/error.c \
 			utils/cleanup.c \
-			signals/signal.c \
-			debug/debug.c
+			signals/signal.c
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ		= $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))

@@ -315,9 +315,4 @@ bool restore_io(t_io_fds *io);
 // heredoc.c
 bool get_heredoc(t_data *data, t_io_fds *io);
 
-/* ------------------------ DEBUG -------------------------------------------*/
-// debug.c
-void print_cmd_list(t_data *data);
-void print_token_list(t_token **tokens);
-
 #endif

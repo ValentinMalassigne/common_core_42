@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   exit_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 18:32:33 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/05 12:17:05 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:06:40 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:27:27 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* check_out_of_range:
  *	Checks if the number goes over LONG_MAX or LONG_MIN.
  *	Sets an error boolean to true if the number is out of range, false if not.
  */
-static bool check_out_of_range(int neg, unsigned long long num, bool *error)
+static bool	check_out_of_range(int neg, unsigned long long num, bool *error)
 {
-	if ((neg == 1 && num > LONG_MAX) || (neg == -1 && num > -(unsigned long)LONG_MIN))
+	if ((neg == 1 && num > LONG_MAX)
+		|| (neg == -1 && num > -(unsigned long)LONG_MIN))
 		*error = true;
 	return (*error);
 }
@@ -28,11 +29,11 @@ static bool check_out_of_range(int neg, unsigned long long num, bool *error)
  *	Returns the long integer. In case of error, sets an error boolean
  *	to true.
  */
-static int ft_atoi_long(const char *str, bool *error)
+static int	ft_atoi_long(const char *str, bool *error)
 {
-	unsigned long long num;
-	int neg;
-	int i;
+	unsigned long long	num;
+	int					neg;
+	int					i;
 
 	num = 0;
 	neg = 1;
@@ -50,15 +51,15 @@ static int ft_atoi_long(const char *str, bool *error)
 	{
 		num = (num * 10) + (str[i] - '0');
 		if (check_out_of_range(neg, num, error))
-			break;
+			break ;
 		i++;
 	}
 	return (num * neg);
 }
 
-static int get_exit_code(char *arg, bool *error)
+static int	get_exit_code(char *arg, bool *error)
 {
-	unsigned long long i;
+	unsigned long long	i;
 
 	if (!arg)
 		return (g_last_exit_code);
@@ -81,9 +82,9 @@ static int get_exit_code(char *arg, bool *error)
 	return (i % 256);
 }
 
-static bool is_quiet_mode(t_data *data)
+static bool	is_quiet_mode(t_data *data)
 {
-	t_command *cmd;
+	t_command	*cmd;
 
 	cmd = data->cmd;
 	if (!cmd)
@@ -93,11 +94,11 @@ static bool is_quiet_mode(t_data *data)
 	return (false);
 }
 
-int exit_builtin(t_data *data, char **args)
+int	exit_builtin(t_data *data, char **args)
 {
-	int exit_code;
-	bool error;
-	bool quiet;
+	int		exit_code;
+	bool	error;
+	bool	quiet;
 
 	quiet = is_quiet_mode(data);
 	error = false;
@@ -110,7 +111,7 @@ int exit_builtin(t_data *data, char **args)
 		exit_code = get_exit_code(args[1], &error);
 		if (error)
 			exit_code = errmsg_cmd("exit", args[1],
-								   "numeric argument required", 2);
+					"numeric argument required", 2);
 		else if (args[2])
 			return (errmsg_cmd("exit", NULL, "too many arguments", 1));
 	}

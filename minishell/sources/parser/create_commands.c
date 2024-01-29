@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_commands.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:16:58 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:17:32 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:37 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:38 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static void	prep_no_arg_commands(t_data *data)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   token_lst_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 23:50:28 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/07 14:49:40 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:20 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:21:58 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 t_token	*lst_new_token(char *str, char *str_backup, int type, int status)
 {
@@ -52,12 +52,12 @@ void	lst_add_back_token(t_token **alst, t_token *new_node)
 void	lstdelone_token(t_token *lst, void (*del)(void *))
 {
 	if (del && lst && lst->str)
-	{	
+	{
 		(*del)(lst->str);
 		lst->str = NULL;
 	}
 	if (del && lst && lst->str_backup)
-	{	
+	{
 		(*del)(lst->str_backup);
 		lst->str_backup = NULL;
 	}

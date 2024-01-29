@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_args_echo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:02:55 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:03:12 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:56 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:57 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /*
 **  This function deals with the specific case when the command is "echo"

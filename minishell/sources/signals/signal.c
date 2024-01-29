@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:42:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 09:42:24 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:18:24 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-void signal_reset_prompt(int signo)
+void	signal_reset_prompt(int signo)
 {
 	(void)signo;
 	write(1, "\n", 1);
@@ -21,9 +21,9 @@ void signal_reset_prompt(int signo)
 	rl_redisplay();
 }
 
-void set_signals_interactive(void)
+void	set_signals_interactive(void)
 {
-	struct sigaction act;
+	struct sigaction	act;
 
 	ignore_sigquit();
 	ft_memset(&act, 0, sizeof(act));
@@ -31,15 +31,15 @@ void set_signals_interactive(void)
 	sigaction(SIGINT, &act, NULL);
 }
 
-void signal_print_newline(int signal)
+void	signal_print_newline(int signal)
 {
 	(void)signal;
 	rl_on_new_line();
 }
 
-void set_signals_noninteractive(void)
+void	set_signals_noninteractive(void)
 {
-	struct sigaction act;
+	struct sigaction	act;
 
 	ft_memset(&act, 0, sizeof(act));
 	act.sa_handler = &signal_print_newline;
@@ -47,9 +47,9 @@ void set_signals_noninteractive(void)
 	sigaction(SIGQUIT, &act, NULL);
 }
 
-void ignore_sigquit(void)
+void	ignore_sigquit(void)
 {
-	struct sigaction act;
+	struct sigaction	act;
 
 	ft_memset(&act, 0, sizeof(act));
 	act.sa_handler = SIG_IGN;

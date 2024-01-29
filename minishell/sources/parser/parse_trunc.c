@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_trunc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:16:18 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:16:26 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:30 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:31 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /*
 	TRUNC -> Redirection of output.

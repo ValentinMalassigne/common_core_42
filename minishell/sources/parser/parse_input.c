@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:20:39 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:20:42 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:17 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:18 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /*	INPUT -> REDIR_IN (<)
 	Redirection of input causes the file whose name results from the expansion 

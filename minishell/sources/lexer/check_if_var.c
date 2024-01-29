@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_if_var.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 23:40:24 by alexa             #+#    #+#             */
-/*   Updated: 2022/09/23 15:20:27 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:58 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:22:33 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static void	variable_check(t_token **token_node)
 {
@@ -20,7 +20,7 @@ static void	variable_check(t_token **token_node)
 	while ((*token_node)->str[i])
 	{
 		if ((*token_node)->str[i] == '$')
-		{	
+		{
 			if ((*token_node)->prev && (*token_node)->prev->type == HEREDOC)
 				break ;
 			(*token_node)->type = VAR;

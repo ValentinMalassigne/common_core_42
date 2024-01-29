@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:37:00 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 09:37:00 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:15:55 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-void exit_shell(t_data *data, int exno)
+void	exit_shell(t_data *data, int exno)
 {
 	if (data)
 	{

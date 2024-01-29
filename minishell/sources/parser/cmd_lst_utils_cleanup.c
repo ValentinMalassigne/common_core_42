@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_lst_utils_cleanup.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:21:24 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:21:27 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:26 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:27 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 void	lst_delone_cmd(t_command *lst, void (*del)(void *))
 {

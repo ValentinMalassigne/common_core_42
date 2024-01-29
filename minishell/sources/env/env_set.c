@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 17:51:06 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/10/06 14:45:10 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:07:32 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:07:33 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* realloc_env_vars:
 *	Reallocates memory for the global variable g_env_vars.

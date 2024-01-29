@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 17:12:08 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/10/07 15:49:07 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:07:39 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:07:41 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* execute_builtin:
 *	Executes the given command if it is a builtin command.

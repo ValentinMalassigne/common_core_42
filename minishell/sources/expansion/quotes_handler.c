@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 14:39:40 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/05 13:15:10 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:08 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:10 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 int	count_len(char *str, int count, int i)
 {

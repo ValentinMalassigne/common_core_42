@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:22:49 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:22:52 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:23 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:24 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 void	parse_pipe(t_command **cmd, t_token **token_lst)
 {

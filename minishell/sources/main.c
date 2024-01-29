@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 08:48:52 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 08:48:52 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:28:56 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int g_last_exit_code;
+int	g_last_exit_code;
 
-static bool start_check(t_data *data, int ac, char **av)
+static bool	start_check(t_data *data, int ac, char **av)
 {
 	if (ac != 1 && ac != 3)
 		return (usage_message(false));
@@ -31,7 +31,7 @@ static bool start_check(t_data *data, int ac, char **av)
 	return (true);
 }
 
-void minishell_interactive(t_data *data)
+void	minishell_interactive(t_data *data)
 {
 	while (1)
 	{
@@ -57,10 +57,10 @@ void minishell_interactive(t_data *data)
  *	-> echo hello is the first command run
  *	-> ls is the second
  */
-void minishell_noninteractive(t_data *data, char *arg)
+void	minishell_noninteractive(t_data *data, char *arg)
 {
-	char **user_inputs;
-	int i;
+	char	**user_inputs;
+	int		i;
 
 	user_inputs = ft_split(arg, ';');
 	if (!user_inputs)
@@ -79,9 +79,9 @@ void minishell_noninteractive(t_data *data, char *arg)
 	free_str_tab(user_inputs);
 }
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
-	t_data data;
+	t_data	data;
 
 	ft_memset(&data, 0, sizeof(t_data));
 	if (!start_check(&data, argc, argv) || !init_data(&data, env))

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_user_input.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:55:08 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 09:55:08 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:22:23 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-static bool input_is_space(char *input)
+static bool	input_is_space(char *input)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (input[i])
@@ -26,7 +26,7 @@ static bool input_is_space(char *input)
 	return (true);
 }
 
-bool parse_user_input(t_data *data)
+bool	parse_user_input(t_data *data)
 {
 	if (data->user_input == NULL)
 		exit_builtin(data, NULL);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_heredoc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:09:01 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:09:19 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:12 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:13 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* get_heredoc:
 *	Opens a heredoc awaiting user input.

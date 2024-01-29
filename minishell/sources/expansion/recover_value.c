@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   recover_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 16:26:14 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/07 16:26:15 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:22 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:23 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static int	var_exists(t_data *data, char *var)
 {

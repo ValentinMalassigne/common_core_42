@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_args_default.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:05:49 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:45:21 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:42 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:44 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 int	count_arguments(t_token *temp)
 {

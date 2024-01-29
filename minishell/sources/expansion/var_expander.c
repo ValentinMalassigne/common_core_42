@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   var_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 02:35:14 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/07 17:03:43 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:49 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:50 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /*
 *  After splitting the user's input into tokens, we have to expand 

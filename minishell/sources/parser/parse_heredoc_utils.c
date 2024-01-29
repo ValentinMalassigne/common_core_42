@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_heredoc_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:09:37 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:09:40 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:06 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:19:11 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* make_str_from_tab:
 *	Creates a single string from an array of strings by
@@ -109,7 +109,8 @@ static bool	evaluate_heredoc_line(t_data *data, char **line,
 }
 
 /* fill_heredoc:
-*	Copies user input into a temporary file. If user inputs an environment variable
+*	Copies user input into a temporary file. 
+*	If user inputs an environment variable
 *	like $USER, expands the variable before writing to the heredoc.
 *	Returns true on success, false on failure.
 */

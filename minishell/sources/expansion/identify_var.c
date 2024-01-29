@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   identify_var.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 15:14:08 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/04 12:32:48 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:02 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:04 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 bool	is_var_compliant(char c)
 {

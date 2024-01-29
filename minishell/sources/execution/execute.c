@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:01:02 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 09:01:02 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:24:07 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
  *		"The exit status of a pipeline is the exit status of the last command
  *		in the pipeline"
  */
-static int get_children(t_data *data)
+static int	get_children(t_data *data)
 {
-	pid_t wpid;
-	int status;
-	int save_status;
+	pid_t	wpid;
+	int		status;
+	int		save_status;
 
 	close_fds(data->cmd, false);
 	save_status = 0;
@@ -37,7 +37,7 @@ static int get_children(t_data *data)
 		wpid = waitpid(-1, &status, 0);
 		if (wpid == data->pid)
 			save_status = status;
-		continue;
+		continue ;
 	}
 	if (WIFSIGNALED(save_status))
 		status = 128 + WTERMSIG(save_status);
@@ -56,9 +56,9 @@ static int get_children(t_data *data)
  *	builtin was executed alone.
  *	Returns false if there was a fork error.
  */
-static int create_children(t_data *data)
+static int	create_children(t_data *data)
 {
-	t_command *cmd;
+	t_command	*cmd;
 
 	cmd = data->cmd;
 	while (data->pid != 0 && cmd)
@@ -79,7 +79,7 @@ static int create_children(t_data *data)
  *	Returns false in case of error, true if all is ready to
  *	execute.
  */
-static int prep_for_exec(t_data *data)
+static int	prep_for_exec(t_data *data)
 {
 	if (!data || !data->cmd)
 		return (EXIT_SUCCESS);
@@ -100,14 +100,15 @@ static int prep_for_exec(t_data *data)
  *	Returns the exit code of the last child to terminate. Or
  *	exit code 1 in case of failure in the child creation process.
  */
-int execute(t_data *data)
+int	execute(t_data *data)
 {
-	int ret;
+	int	ret;
 
 	ret = prep_for_exec(data);
 	if (ret != CMD_NOT_FOUND)
 		return (ret);
-	if (!data->cmd->pipe_output && !data->cmd->prev && check_infile_outfile(data->cmd->io_fds))
+	if (!data->cmd->pipe_output && !data->cmd->prev
+		&& check_infile_outfile(data->cmd->io_fds))
 	{
 		redirect_io(data->cmd->io_fds);
 		ret = execute_builtin(data, data->cmd);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   var_expander_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:52:09 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:52:18 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:36 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:38 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 void	copy_var_value(char *new_str, char *var_value, int *j)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:55:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/09/19 15:41:22 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 07:54:34 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* env_builtin:
 *	Executes the builtin env command: Prints the environment variables.

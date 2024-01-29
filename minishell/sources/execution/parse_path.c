@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 17:46:45 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/04 13:06:33 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:07:54 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:07:55 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* find_valid_cmd_path:
 *	Checks access and permissions for each possible command path to find

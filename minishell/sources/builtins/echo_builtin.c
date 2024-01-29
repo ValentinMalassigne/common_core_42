@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 18:55:59 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/03 15:48:44 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:06:28 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:27:54 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* is_n_flag:
 *	Checks whether an arg is an -n option flag.
 *	Returns true if the arg is some variation of -n, -nnnn, -nn, etc.
-*	Returns false if it contains anything other than - and n (ex. --n -nnnm -n1234)
+*	Returns false if it contains anything other than
+*	- and n (ex. --n -nnnm -n1234)
 */
 static bool	is_n_flag(char *arg)
 {

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 19:05:55 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:24:24 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:57 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:17:18 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* free_data:
  *	Frees all of the data used to run a command. If clear_history is true,
  *	frees the environment and the command history before returning.
  */
-void free_data(t_data *data, bool clear_history)
+void	free_data(t_data *data, bool clear_history)
 {
 	if (data && data->user_input)
 	{
@@ -44,7 +44,7 @@ void free_data(t_data *data, bool clear_history)
  *	output fds. If close_backups is set to true, it also closes
  *	backup STDIN and STDOUT file descriptors.
  */
-void close_fds(t_command *cmds, bool close_backups)
+void	close_fds(t_command *cmds, bool close_backups)
 {
 	if (cmds->io_fds)
 	{
@@ -61,10 +61,10 @@ void close_fds(t_command *cmds, bool close_backups)
 /* free_io:
  *	Frees the input/output fd structure.
  */
-void free_io(t_io_fds *io)
+void	free_io(t_io_fds *io)
 {
 	if (!io)
-		return;
+		return ;
 	restore_io(io);
 	if (io->heredoc_delimiter)
 	{
@@ -82,9 +82,9 @@ void free_io(t_io_fds *io)
 /* free_str_tab:
  *	Frees an array of strings.
  */
-void free_str_tab(char **tab)
+void	free_str_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (tab)
@@ -107,7 +107,7 @@ void free_str_tab(char **tab)
  *	Frees a pointer of any type if it is not NULL and sets it to NULL.
  *	This avoids accidental double-frees.
  */
-void free_ptr(void *ptr)
+void	free_ptr(void *ptr)
 {
 	if (ptr != NULL)
 	{

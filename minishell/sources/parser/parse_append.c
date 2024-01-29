@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_append.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexa <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:06:46 by alexa             #+#    #+#             */
-/*   Updated: 2022/11/10 00:08:37 by alexa            ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:01 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:02 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /*
 	***APPEND***

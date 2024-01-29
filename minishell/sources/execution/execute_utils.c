@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 17:28:59 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:27:57 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:07:46 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:07:47 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* cmd_is_dir:
 *	Checks if the command is a directory rather than an executable.

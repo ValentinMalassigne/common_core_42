@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   token_lst_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 00:10:55 by alexa             #+#    #+#             */
-/*   Updated: 2022/10/06 14:44:13 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:11 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:15 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static void	link_extremities(t_token *to_del, t_token *temp, t_token *insert)
 {

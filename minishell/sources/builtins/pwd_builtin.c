@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pwd_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 18:30:28 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/05 12:17:15 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:07:13 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:07:15 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* pwd_builtin:
 *	Executes the builtin pwd command and displays the

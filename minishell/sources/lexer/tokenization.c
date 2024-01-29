@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:21:27 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 13:21:27 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:22:00 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
  *
  */
 
-int tokenization(t_data *data, char *str)
+int	tokenization(t_data *data, char *str)
 {
-	int i;
-	int end;
-	int start;
-	int status;
+	int	i;
+	int	end;
+	int	start;
+	int	status;
 
 	i = -1;
 	start = 0;

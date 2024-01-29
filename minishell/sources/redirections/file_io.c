@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_io.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 17:51:46 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:21:42 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:45 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:47 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* restore_io:
 *	Restores the original standard input and standard output

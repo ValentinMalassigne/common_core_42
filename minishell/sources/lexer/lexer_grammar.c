@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_grammar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 23:45:35 by alexa             #+#    #+#             */
-/*   Updated: 2022/09/23 15:20:47 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:09:05 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:09:06 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static bool	consecutive_ops(t_token *token_node)
 {

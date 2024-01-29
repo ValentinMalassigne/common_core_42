@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_remover.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 14:42:10 by alexa             #+#    #+#             */
-/*   Updated: 2022/10/06 14:43:22 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:08:14 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:08:16 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 static void	change_status_to_quote(t_token **token_node, int *i)
 {

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   tokenization_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:36:53 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 13:36:53 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:20:58 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-int save_separator(t_token **token_lst, char *str, int index, int type)
+int	save_separator(t_token **token_lst, char *str, int index, int type)
 {
-	int i;
-	char *sep;
+	int		i;
+	char	*sep;
 
 	i = 0;
 	if (type == APPEND || type == HEREDOC)
@@ -41,10 +41,10 @@ int save_separator(t_token **token_lst, char *str, int index, int type)
 	return (0);
 }
 
-int save_word(t_token **token_lst, char *str, int index, int start)
+int	save_word(t_token **token_lst, char *str, int index, int start)
 {
-	int i;
-	char *word;
+	int		i;
+	char	*word;
 
 	i = 0;
 	word = malloc(sizeof(char) * (index - start + 1));
@@ -58,11 +58,11 @@ int save_word(t_token **token_lst, char *str, int index, int start)
 	}
 	word[i] = '\0';
 	lst_add_back_token(token_lst,
-					   lst_new_token(word, ft_strdup(word), WORD, DEFAULT));
+		lst_new_token(word, ft_strdup(word), WORD, DEFAULT));
 	return (0);
 }
 
-int is_separator(char *str, int i)
+int	is_separator(char *str, int i)
 {
 	if (((str[i] > 8 && str[i] < 14) || str[i] == 32))
 		return (SPACES);
@@ -82,7 +82,7 @@ int is_separator(char *str, int i)
 		return (0);
 }
 
-int set_status(int status, char *str, int i)
+int	set_status(int status, char *str, int i)
 {
 	if (str[i] == '\'' && status == DEFAULT)
 		status = SQUOTE;
@@ -95,16 +95,17 @@ int set_status(int status, char *str, int i)
 	return (status);
 }
 
-int save_word_or_sep(int *i, char *str, int start, t_data *data)
+int	save_word_or_sep(int *i, char *str, int start, t_data *data)
 {
-	int type;
+	int	type;
 
 	type = is_separator(str, (*i));
 	if (type)
 	{
 		if ((*i) != 0 && is_separator(str, (*i) - 1) == 0)
 			save_word(&data->token, str, (*i), start);
-		if (type == APPEND || type == HEREDOC || type == PIPE || type == INPUT || type == TRUNC || type == END)
+		if (type == APPEND || type == HEREDOC || type == PIPE
+			|| type == INPUT || type == TRUNC || type == END)
 		{
 			save_separator(&data->token, str, (*i), type);
 			if (type == APPEND || type == HEREDOC)

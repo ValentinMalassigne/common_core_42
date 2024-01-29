@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+         #
+#    By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 16:55:18 by vmalassi          #+#    #+#              #
-#    Updated: 2023/06/09 17:49:32 by vmalassi         ###   ########.fr        #
+#    Updated: 2024/01/29 07:59:09 by vmalassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ LIBFT_SRC := ft_isalpha \
 		ft_strchr \
 		ft_strrchr \
 		ft_strncmp \
+		ft_strcmp \
 		ft_memchr \
 		ft_memcmp \
 		ft_strnstr \
@@ -64,6 +65,7 @@ LIBFT_SRC := ft_isalpha \
 		ft_lstclear \
 		ft_lstiter \
 		ft_lstmap \
+		ft_isspace \
 
 GET_NEXT_LINE_SRC := get_next_line \
 		get_next_line_utils \

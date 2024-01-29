@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 18:06:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/04 17:21:47 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:10:51 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:10:52 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* close_pipe_fds:
 *	Closes the pipe fds of all commands. A pointer to a command to skip

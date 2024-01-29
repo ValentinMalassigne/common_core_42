@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 19:03:08 by vmalassi          #+#    #+#             */
-/*   Updated: 2022/11/11 14:22:23 by vmalassi         ###   ########.fr       */
+/*   Created: 2024/01/29 08:06:21 by vmalassi          #+#    #+#             */
+/*   Updated: 2024/01/29 08:28:02 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../headers/minishell.h"
 
 /* update_wds:
 *	Updates the PWD and OLDPWD in the environment after a directory change.

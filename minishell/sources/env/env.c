@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmalassi <vmalassi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:18:38 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/26 09:18:38 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 08:25:15 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-int env_var_count(char **env)
+int	env_var_count(char **env)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (env && env[i])
@@ -22,10 +22,10 @@ int env_var_count(char **env)
 	return (i);
 }
 
-int get_env_var_index(char **env, char *var)
+int	get_env_var_index(char **env, char *var)
 {
-	int i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	tmp = ft_strjoin(var, "=");
 	if (!tmp)
@@ -44,10 +44,10 @@ int get_env_var_index(char **env, char *var)
 	return (-1);
 }
 
-char *get_env_var_value(char **env, char *var)
+char	*get_env_var_value(char **env, char *var)
 {
-	int i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	tmp = ft_strjoin(var, "=");
 	if (!tmp)
@@ -72,9 +72,9 @@ char *get_env_var_value(char **env, char *var)
  *	Returns true if the key contains only alphanumeric chars
  *	or '_', or false if not.
  */
-bool is_valid_env_var_key(char *var)
+bool	is_valid_env_var_key(char *var)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_isalpha(var[i]) == 0 && var[i] != '_')

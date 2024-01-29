@@ -12,12 +12,6 @@
 
 #include "../../headers/minishell.h"
 
-/* restore_io:
-*	Restores the original standard input and standard output
-*	to their original fds of 0 and 1. Used to clear the input/output
-*	fds after execution, in preparation for the next set of user commands.
-*	Returns 1 if the duplication was successful, 0 if not.
-*/
 bool	restore_io(t_io_fds *io)
 {
 	int	ret;

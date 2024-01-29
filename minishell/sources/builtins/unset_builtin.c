@@ -6,19 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:07:24 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:07:26 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:02:04 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* unset_builtin:
-*	Removes the environment variables with the given keys
-*	after checking if they are valid keys.
-*	Does nothing if the key is not in the environment.
-*	Returns 0 if all args were successfully unset, or 1 if
-*	one or more args could not be unset.
-*/
 int	unset_builtin(t_data *data, char **args)
 {
 	int	i;

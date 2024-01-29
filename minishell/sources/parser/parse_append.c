@@ -6,34 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:10:01 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:10:02 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:05:09 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/*
-	***APPEND***
-	Redirection of output in append mode causes the file whose name results 
-	from the expansion of word to be opened for appending on file descriptor n, 
-	or the standard output (fd 1) if n is not specified. 
-	If the file does not exist it is created.
-
-	The general format for appending output is: [n]>>word.
-
-*/
-
-/* open_outfile_append:
-*	Opens an outfile in append mode. If an outfile was already set, frees it
-*	and overwrites it. If a previous infile or outfile open failed (file does
-*	not exist or permission denied), does not open any further output file.
-*
-*	Ex.:
-*		echo hello > forbidden_file >> test
-*		echo hello >> forbidden_file >> test
-*		< forbidden_file cat >> test
-*	In these 3 cases, the test file should not be opened or created.
-*/
 static void	open_outfile_append(t_io_fds *io, char *file, char *var_filename)
 {
 	if (!remove_old_file_ref(io, false))

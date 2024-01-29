@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:18:38 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:25:15 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:03:07 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ char	*get_env_var_value(char **env, char *var)
 	return (NULL);
 }
 
-/* is_valid_env_var_key:
- *	Checks if the key is a valid name for an evironment
- *	variable.
- *	Returns true if the key contains only alphanumeric chars
- *	or '_', or false if not.
- */
 bool	is_valid_env_var_key(char *var)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:08:39 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:14:26 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:25:24 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,6 @@ bool	init_data(t_data *data, char **env)
 	return (true);
 }
 
-/* init_io:
- *	Initializes a structure with default values to contain
- *	infile and outfile information for a command.
- */
 void	init_io(t_command *cmd)
 {
 	if (!cmd->io_fds)

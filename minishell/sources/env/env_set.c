@@ -6,18 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:07:32 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:07:33 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:02:53 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* realloc_env_vars:
-*	Reallocates memory for the global variable g_env_vars.
-*
-*	Returns a pointer to the new environment variables
-*	or NULL in case of a memory allocation error.
-*/
 static char	**realloc_env_vars(t_data *data, int size)
 {
 	char	**new_env;
@@ -37,15 +31,6 @@ static char	**realloc_env_vars(t_data *data, int size)
 	return (new_env);
 }
 
-/* set_env_var:
-*	Adds an environment variable with the given key
-*	corresponding to the given value. If the key already
-*	exists in the environment variables, the value will
-*	be overwritten. If not, it creates a new entry.
-*
-*	Returns 1 if the operation was successful, or 0 if
-*	in case of error.
-*/
 bool	set_env_var(t_data *data, char *key, char *value)
 {
 	int		idx;
@@ -74,13 +59,6 @@ bool	set_env_var(t_data *data, char *key, char *value)
 	return (true);
 }
 
-/* remove_env_var:
-*	Removes the variable at the given index from the
-*	environment variables.
-*
-*	Returns 1 if the removal was successful, 0 if case
-*	of an invalid index or a memory allocation error.
-*/
 bool	remove_env_var(t_data *data, int idx)
 {
 	int	i;

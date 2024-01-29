@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 08:48:52 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:28:56 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:06:59 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	minishell_interactive(t_data *data)
 {
 	while (1)
 	{
+		
 		set_signals_interactive();
 		data->user_input = readline(PROMPT);
 		set_signals_noninteractive();
@@ -46,17 +47,6 @@ void	minishell_interactive(t_data *data)
 	}
 }
 
-/* minishell_noninteractive:
- *	Runs parsing and execution in noninteractive mode, i.e. when
- *	minishell is started with the -c option followed by an argument
- *	containing the commands to be executed:
- *		./minishell -c "echo hello | wc -c"
- *	Commands in this mode can be separated by a semicolon, ';' to
- *	indicate sequential execution:
- *		./minishell -c "echo hello; ls"
- *	-> echo hello is the first command run
- *	-> ls is the second
- */
 void	minishell_noninteractive(t_data *data, char *arg)
 {
 	char	**user_inputs;

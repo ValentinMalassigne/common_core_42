@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:09:42 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:09:44 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:23:21 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ int	count_arguments(t_token *temp)
 	}
 	return (i);
 }
-
-/*
-**  This function fills the array of arguments of the last_cmd by default mode:
-**    - It allocates the array of arguments thanks to the count_args function
-**    - It loops through the tokens list while the nodes are of type
-**        VAR or WORD, and fills last_cmd->args[i] with the current token 
-*/
 
 int	create_args_default_mode(t_token **token_node, t_command *last_cmd)
 {
@@ -108,13 +101,6 @@ int	add_args_default_mode(t_token **token_node, t_command *last_cmd)
 	*token_node = temp;
 	return (SUCCESS);
 }
-
-/*
-**  This function fills the arguments in the command structure (command->args)
-**  It has two modes: 
-**    - The "echo mode" if the command is the builtin "echo"
-**    - The default mode for all the other cases
-*/
 
 int	fill_args(t_token **token_node, t_command *last_cmd)
 {

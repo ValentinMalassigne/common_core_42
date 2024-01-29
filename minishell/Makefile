@@ -1,7 +1,7 @@
 NAME	= minishell
 
 CC		= clang
-CFLAGS	= -Werror -Wextra -Wall -gdwarf-4 -g
+CFLAGS	= -Werror -Wextra -Wall
 
 SRC_PATH = ./sources/
 OBJ_PATH = ./objects/

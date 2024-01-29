@@ -6,15 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:55:54 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 07:54:34 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:01:50 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* env_builtin:
-*	Executes the builtin env command: Prints the environment variables.
-*/
 int	env_builtin(t_data *data, char **args)
 {
 	int	i;

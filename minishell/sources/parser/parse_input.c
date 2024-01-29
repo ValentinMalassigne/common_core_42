@@ -6,19 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:10:17 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:10:18 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:36:11 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-/*	INPUT -> REDIR_IN (<)
-	Redirection of input causes the file whose name results from the expansion 
-	of word to be opened for reading on file descriptor n, or the standard input
-	(file descriptor 0) if n is not specified.
-
-	The general format for redirecting input is: [n]<word
-*/
 
 bool	remove_old_file_ref(t_io_fds *io, bool infile)
 {
@@ -45,16 +37,6 @@ bool	remove_old_file_ref(t_io_fds *io, bool infile)
 	return (true);
 }
 
-/* open_infile:
-*	Opens an infile. If an infile was already set, frees it
-*	and overwrites it. If a previous infile open failed (file does
-*	not exist or permission denied), does not open any further input file.
-*	Ex.:
-*		< Makefile <README.md cat > test
-*			Uses contents of README as input (ignores Makefile)
-*		< forbidden <README.md cat > test
-*			Permission denied (no README cat)
-*/
 static void	open_infile(t_io_fds *io, char *file, char *original_filename)
 {
 	if (!remove_old_file_ref(io, true))

@@ -6,26 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:21:27 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:22:00 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 09:45:01 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-/*
- *	This function divides the given string (user input) into two
- *   types of tokens : words or separators (pipes, heredoc , etc)
- *	It checks each char of the string and defines if it is a separator or
- *   a word and then saves the token in a linked list.
- *   Also checks if there is an unclosed quote error and defines which
- *   separators will be evaluated following the single or double quoting rules:
- *
- *   -Without quotes, bash tries to evaluate all special characters
- *   -Single quotes (') prevent all evaluation
- *   -Double quotes (") prevent most evaluation,
- *		but notably not the evaluation of variables
- *
- */
 
 int	tokenization(t_data *data, char *str)
 {
@@ -51,7 +36,7 @@ int	tokenization(t_data *data, char *str)
 		else if (status == SQUOTE)
 			errmsg("unexpected EOF while looking for matching", "\'", true);
 		errmsg("syntax error", "unexpected end of file", false);
-		return (1);
+		return (FAILURE);
 	}
 	return (0);
 }

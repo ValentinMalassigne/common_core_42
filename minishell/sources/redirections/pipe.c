@@ -6,21 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:10:51 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:10:52 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:06:24 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* close_pipe_fds:
-*	Closes the pipe fds of all commands. A pointer to a command to skip
-*	can be specified to skip closing that command's pipe fds:
-*		- The parent will specify NULL for the skip command while closing
-*		all pipe fds.
-*		- The child will specify its own command as skip command while
-*		closing all pipe fds so as to not accidentally close its own
-*		pipe fds.
-*/
 void	close_pipe_fds(t_command *cmds, t_command *skip_cmd)
 {
 	while (cmds)
@@ -34,11 +25,6 @@ void	close_pipe_fds(t_command *cmds, t_command *skip_cmd)
 	}
 }
 
-/* create_pipes:
-*	Creates a set of pipes for each piped command in the list
-*	of commands.
-*	Returns 1 if successful, 0 in case of failure.
-*/
 bool	create_pipes(t_data *data)
 {
 	int			*fd;
@@ -62,15 +48,6 @@ bool	create_pipes(t_data *data)
 	return (true);
 }
 
-/* set_pipe_fds:
-*	Sets the pipe fds for this command. If the previous command
-*	was piped to this one, sets the input as the read end of
-*	the previous command. If this command is piped to the
-*	next, sets the output ad the write end of the pipe.
-*		pipe_fd[0] = read end of pipe.
-*		pipe_fd[1] = write end of pipe.
-*	Returns true when the pipe file descriptors are set.
-*/
 bool	set_pipe_fds(t_command *cmds, t_command *c)
 {
 	if (!c)

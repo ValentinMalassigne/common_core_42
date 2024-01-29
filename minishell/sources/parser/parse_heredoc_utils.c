@@ -6,17 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:10:06 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:19:11 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:05:17 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* make_str_from_tab:
-*	Creates a single string from an array of strings by
-*	joining a string to the next.
-*	Returns the string.
-*/
 static char	*make_str_from_tab(char **tab)
 {
 	char	*str;
@@ -45,13 +40,6 @@ static char	*make_str_from_tab(char **tab)
 	return (str);
 }
 
-/* get_exoanded_var_line:
-*	Prepares a line containing '$' for environment variable expansion.
-*	Splits the line into words to avoid issues with inexistent
-*	environment variables.
-*	ex. $USER uses $LANGUAGE -> username uses en_US:en
-*	Returns a new line with expanded variables.
-*/
 static char	*get_expanded_var_line(t_data *data, char *line)
 {
 	char	**words;
@@ -74,12 +62,6 @@ static char	*get_expanded_var_line(t_data *data, char *line)
 	return (make_str_from_tab(words));
 }
 
-/* evaluate_heredoc_line:
-*	Checks whether the read line should be written to heredoc file.
-*	If the line is NULL or the same as the given delimiter, returns false
-*	to signify that we should stop reading with readline. Otherwise, returns
-*	true.
-*/
 static bool	evaluate_heredoc_line(t_data *data, char **line,
 									t_io_fds *io, bool *ret)
 {
@@ -108,12 +90,6 @@ static bool	evaluate_heredoc_line(t_data *data, char **line,
 	return (true);
 }
 
-/* fill_heredoc:
-*	Copies user input into a temporary file. 
-*	If user inputs an environment variable
-*	like $USER, expands the variable before writing to the heredoc.
-*	Returns true on success, false on failure.
-*/
 bool	fill_heredoc(t_data *data, t_io_fds *io, int fd)
 {
 	char	*line;

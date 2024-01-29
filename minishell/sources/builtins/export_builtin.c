@@ -6,19 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:06:46 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:06:48 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:01:40 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* get_key_value_pair:
-*	Separates the given argument into a key-value pair
-*	for the environment variable.
-*	Returns an array of 2 strings containing the key and the
-*	value of the new environment variable.
-*	Returns NULL in case of error.
-*/
 static char	**get_key_value_pair(char *arg)
 {
 	char	**tmp;
@@ -32,11 +25,6 @@ static char	**get_key_value_pair(char *arg)
 	return (tmp);
 }
 
-/* export_builtin:
-*	Adds the given variables to the environment variables.
-*	Returns 0 if all args were successfully added to env,
-*	or 1 if one or more args were not added to env.
-*/
 int	export_builtin(t_data *data, char **args)
 {
 	int		i;

@@ -6,17 +6,11 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:08:49 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:08:50 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:04:16 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
-
-/*
-*  After splitting the user's input into tokens, we have to expand 
-*  the variables. After the expansion is done, quote characters are
-*  removed from the original word unless they are between quotes.
-*/
 
 static void	update_status(t_token **token_node, char c)
 {
@@ -79,11 +73,6 @@ int	var_expander(t_data *data, t_token **token_lst)
 	return (0);
 }
 
-/* var_expander_heredoc:
-*	Heredoc variant of var_expander. Replaces a string containing an
-*	environment variable, like $USER with its corresponding value.
-*	Returns the replaced string. May return NULL on error.
-*/
 char	*var_expander_heredoc(t_data *data, char *str)
 {
 	int	i;

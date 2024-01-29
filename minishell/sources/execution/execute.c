@@ -6,7 +6,7 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:01:02 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:24:07 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:54:57 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,6 @@ static int	prep_for_exec(t_data *data)
 	return (CMD_NOT_FOUND);
 }
 
-/* execute:
- *	Executes the given commands by creating children processes
- *	and waiting for them to terminate.
- *	Returns the exit code of the last child to terminate. Or
- *	exit code 1 in case of failure in the child creation process.
- */
 int	execute(t_data *data)
 {
 	int	ret;

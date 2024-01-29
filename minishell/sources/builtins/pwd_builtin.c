@@ -6,17 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:07:13 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:07:15 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:01:46 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* pwd_builtin:
-*	Executes the builtin pwd command and displays the
-*	current working directory path.
-*	Returns 0 if successful, 1 if an error occured.
-*/
 int	pwd_builtin(t_data *data, char **args)
 {
 	char	buf[PATH_MAX];

@@ -6,16 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:07:46 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:07:47 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:03:36 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* cmd_is_dir:
-*	Checks if the command is a directory rather than an executable.
-*	Returns true if the command is a directory, false if not.
-*/
 bool	cmd_is_dir(char *cmd)
 {
 	struct stat	cmd_stat;
@@ -25,12 +21,6 @@ bool	cmd_is_dir(char *cmd)
 	return (S_ISDIR(cmd_stat.st_mode));
 }
 
-/* check_command_not_found:
-*	Searches for the reason a command was not found in the system binaries.
-*	Returns an error message and status if the command is invalid,
-*	returns EXIT_SUCCESS if the command is valid and should be executed
-*	as a local executable.
-*/
 int	check_command_not_found(t_data *data, t_command *cmd)
 {
 	if (ft_strchr(cmd->command, '/') == NULL

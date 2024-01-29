@@ -3,6 +3,7 @@
 		"time.h": "c",
 		"stdio.h": "c",
 		"libft.h": "c",
-		"philo.h": "c"
+		"philo.h": "c",
+		"minishell.h": "c"
 	}
 }

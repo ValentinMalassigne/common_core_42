@@ -6,16 +6,12 @@
 /*   By: vmalassi <vmalassi@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:10:57 by vmalassi          #+#    #+#             */
-/*   Updated: 2024/01/29 08:17:18 by vmalassi         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:06:39 by vmalassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/minishell.h"
 
-/* free_data:
- *	Frees all of the data used to run a command. If clear_history is true,
- *	frees the environment and the command history before returning.
- */
 void	free_data(t_data *data, bool clear_history)
 {
 	if (data && data->user_input)
@@ -39,11 +35,6 @@ void	free_data(t_data *data, bool clear_history)
 	}
 }
 
-/* close_fds:
- *	Closes opened file descriptors, including pipes and input and
- *	output fds. If close_backups is set to true, it also closes
- *	backup STDIN and STDOUT file descriptors.
- */
 void	close_fds(t_command *cmds, bool close_backups)
 {
 	if (cmds->io_fds)
@@ -58,9 +49,6 @@ void	close_fds(t_command *cmds, bool close_backups)
 	close_pipe_fds(cmds, NULL);
 }
 
-/* free_io:
- *	Frees the input/output fd structure.
- */
 void	free_io(t_io_fds *io)
 {
 	if (!io)
@@ -79,9 +67,6 @@ void	free_io(t_io_fds *io)
 		free_ptr(io);
 }
 
-/* free_str_tab:
- *	Frees an array of strings.
- */
 void	free_str_tab(char **tab)
 {
 	int	i;
@@ -103,10 +88,6 @@ void	free_str_tab(char **tab)
 	}
 }
 
-/* free_ptr:
- *	Frees a pointer of any type if it is not NULL and sets it to NULL.
- *	This avoids accidental double-frees.
- */
 void	free_ptr(void *ptr)
 {
 	if (ptr != NULL)

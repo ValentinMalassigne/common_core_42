@@ -4,6 +4,8 @@
 		"stdio.h": "c",
 		"libft.h": "c",
 		"philo.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"iostream": "cpp",
+		"ostream": "cpp"
 	}
 }

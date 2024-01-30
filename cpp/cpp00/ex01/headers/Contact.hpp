@@ -1,6 +1,11 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
+# include <string>
+# include <iostream>
+# include <sstream>
+# include <cctype>
+
 class Contact {
 public:
 	std::string first_name;
@@ -9,7 +14,7 @@ public:
 	std::string darkest_secret;
 	int phone_number;
 
-	void add_contact();
+	void create_new_contact();
 
 private:
 	std::string get_string_input(std::string prompt);

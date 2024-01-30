@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main\
 			Contact\
+			PhoneBook\
 
 OBJ_DIR = objects
 SRC_DIR = sources

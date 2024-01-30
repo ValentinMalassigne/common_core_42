@@ -1,17 +1,13 @@
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <cctype>
-
 #include "../headers/Contact.hpp"
 
-void Contact::add_contact()
+void Contact::create_new_contact()
 {
-		first_name = get_string_input("first name : ");
-		last_name = get_string_input("last name : ");
-		nickname = get_string_input("nickname : ");
-		darkest_secret = get_string_input("darkest secret : ");
-		phone_number = get_int_input("phone number : ");
+	std::cout << std::endl;
+	first_name = get_string_input("first name : ");
+	last_name = get_string_input("last name : ");
+	nickname = get_string_input("nickname : ");
+	darkest_secret = get_string_input("darkest secret : ");
+	phone_number = get_int_input("phone number : ");
 }
 
 std::string Contact::get_string_input(std::string prompt)
@@ -23,6 +19,7 @@ std::string Contact::get_string_input(std::string prompt)
 		std::getline(std::cin, input);
 		if (is_string_input_valid(input))
 			return (input);
+		std::cout << "Invalid input, input must not be empty\n";
 	}
 }
 
@@ -35,6 +32,7 @@ int Contact::get_int_input(std::string prompt)
 		std::getline(std::cin, input);
 		if (is_int_input_valid(input))
 			return (stoi(input));
+		std::cout << "Invalid input, input must be a positive integer\n";
 	}
 }
 

@@ -3,9 +3,8 @@ NAME = Moar_brainz!
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main\
-			newZombie\
-			randomChump\
 			Zombie\
+			zombieHorde\
 
 OBJ_DIR = objects
 

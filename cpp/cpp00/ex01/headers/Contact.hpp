@@ -1,10 +1,7 @@
+#pragma once
+
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
-
-# include <string>
-# include <iostream>
-# include <sstream>
-# include <cctype>
 
 class Contact {
 public:

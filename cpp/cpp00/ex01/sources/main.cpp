@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "../headers/Contact.hpp"
 #include "../headers/PhoneBook.hpp"
 

@@ -1,3 +1,5 @@
+#include <iostream>
+#include <sstream>
 #include "../headers/Contact.hpp"
 
 void Contact::create_new_contact()

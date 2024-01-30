@@ -2,6 +2,13 @@
 #include <iostream>
 #include "../headers/PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+ {
+	last_contact_index = -1;
+	for(int i = 0; i < BOOK_SIZE; i++)
+		contacts[i].phone_number = -1;
+}
+
 void PhoneBook::save_contact(Contact new_contact)
 {
 	last_contact_index = (last_contact_index + 1) % BOOK_SIZE;

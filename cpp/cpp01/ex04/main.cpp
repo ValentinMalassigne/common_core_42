@@ -31,7 +31,8 @@ void replace_values(std::string& fileContent, char **argv)
 	int to_replace_length = to_replace.length();
 	int replacement_length = replacement.length();
 	size_t i = 0;
-
+	if (!to_replace_length)
+		return ;
 	while (i < fileContent.length())
 	{
 		position = fileContent.find(to_replace);
@@ -39,7 +40,7 @@ void replace_values(std::string& fileContent, char **argv)
 			fileContent.erase(position, to_replace_length);
 			fileContent.insert(position, replacement);
 			i += replacement_length;
-    	} else
+		} else
 			i++;
 	}
 }
@@ -53,8 +54,11 @@ bool read_file_content(std::string& fileContent, char *path)
 	if (inputFile.is_open())
 	{
 		while (std::getline(inputFile, line))
-			fileContent.append(line).append("\n");
-		fileContent.erase(fileContent.length() - 1, 1);
+		{
+			fileContent.append(line);
+			if(!inputFile.eof())
+				fileContent.append("\n");
+		}
 	} else {
 		std::cout << "Error while trying to open " << *path << std::endl;
 		inputFile.close();
@@ -92,3 +96,8 @@ int main(int argc, char **argv)
 	manage_file(argv);
 	return (0);
 }
+
+// ./Sed_is_for_losers test "\n" "abb" remplace pas les retours mais les deux chars \ et n
+// ./Sed_is_for_losers test "" "a" => OK
+// ./Sed_is_for_losers test "a" "" => OK
+// ./Sed_is_for_losers test "lol\n" "a" => OK (teste en passant le \n dans le code)

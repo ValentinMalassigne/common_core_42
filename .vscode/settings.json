@@ -6,6 +6,9 @@
 		"philo.h": "c",
 		"minishell.h": "c",
 		"iostream": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"string": "cpp",
+		"fstream": "cpp",
+		"*.tcc": "cpp"
 	}
 }

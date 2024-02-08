@@ -25,6 +25,12 @@ Fixed::~Fixed()
 
 // Operators
 
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return os;
+}
+
 //arithmetic
 
 Fixed &Fixed::operator=(const Fixed &other)
@@ -141,12 +147,6 @@ int Fixed::toInt ( void ) const {
 	return number >> binary_point;
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
-{
-	os << fixed.toFloat();
-	return os;
-}
-
 Fixed Fixed::min(Fixed &fixed1, Fixed &fixed2)
 {
 	if (fixed1.number > fixed2.number)
@@ -154,7 +154,7 @@ Fixed Fixed::min(Fixed &fixed1, Fixed &fixed2)
 	return fixed1;
 }
 
-Fixed Fixed::min(const Fixed &fixed1,const Fixed &fixed2)
+Fixed const Fixed::min(const Fixed &fixed1,const Fixed &fixed2)
 {
 	if (fixed1.number > fixed2.number)
 		return fixed2;
@@ -168,7 +168,7 @@ Fixed Fixed::max(Fixed &fixed1, Fixed &fixed2)
 	return fixed2;
 }
 
-Fixed Fixed::max(const Fixed &fixed1,const Fixed &fixed2)
+Fixed const Fixed::max(const Fixed &fixed1,const Fixed &fixed2)
 {
 	if (fixed1.number > fixed2.number)
 		return fixed1;

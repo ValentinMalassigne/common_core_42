@@ -1,4 +1,4 @@
-NAME = Polymorphisme
+NAME = Je_ne_veux_pas_bruler_le_monde
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -6,8 +6,8 @@ SRC_FILES = main\
 			Animal\
 			Cat\
 			Dog \
-			WrongAnimal\
-			WrongCat
+			Brain
+
 
 OBJ_DIR = objects
 SRC_DIR = sources

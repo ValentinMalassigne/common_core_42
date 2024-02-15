@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "../headers/Animal.hpp"
 
 Animal::Animal()
 {
@@ -9,6 +9,11 @@ Animal::Animal(const Animal& other)
 {
 	std::cout << "Animal copy constructor called\n";	
 	*this = other;
+}
+
+Animal::Animal(const std::string c_type) : type(c_type)
+{
+	std::cout << "Animal type constructor called\n";
 }
 
 Animal::~Animal()
@@ -25,10 +30,7 @@ Animal& Animal::operator=(const Animal& other)
 
 void Animal::makeSound() const
 {
-	if (type == "Dog")
-		std::cout << "WOUAF WOUAF WOUAF\n";
-	else if (type == "Cat")
-		std::cout << "miaou miaou\n";
+	std::cout << "Animal sound\n";	
 }
 
 std::string Animal::getType() const

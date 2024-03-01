@@ -3,19 +3,20 @@
 #include <iostream>
 #include "Brain.hpp"
 
-class Animal {
+class Animal
+{
 public:
-	Animal( void );
-	Animal(const Animal& c_animal);
+	Animal(void);
+	Animal(const Animal &c_animal);
 	Animal(const std::string type);
 	virtual ~Animal();
 
-	Animal& operator=(const Animal& other);
+	Animal &operator=(const Animal &other);
 
 	virtual void makeSound() const = 0;
 	std::string getType() const;
 
-protected: 
+protected:
 	std::string type;
 };
 /*
@@ -32,4 +33,7 @@ But it is possible to create pointers and references to an abstract class
 
 If a child class does not implement the pure virtual functions of it's parent
 The child class will also become an abstract class
+
+The main difference between pure virtual and virtual is that pure virtuals are not
+defined in the base class. And the fact that the class becomes abstract
 */

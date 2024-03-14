@@ -1,23 +1,8 @@
 #include "../headers/ScalarConverter.hpp"
-
-int main()
+#include <string>
+int main(int argc, char **argv)
 {
-	ScalarConverter::convert("'c'");
-	ScalarConverter::convert("'a'");
-	ScalarConverter::convert("0");
-	ScalarConverter::convert("-42");
-	ScalarConverter::convert("42");
-	ScalarConverter::convert("0.0f");
-	ScalarConverter::convert("-4.2f");
-	ScalarConverter::convert("4.2f");
-	ScalarConverter::convert("-inff");
-	ScalarConverter::convert("+inff");
-	ScalarConverter::convert("0.0");
-	ScalarConverter::convert("-4.2");
-	ScalarConverter::convert("4.2");
-	ScalarConverter::convert("-inf");
-	ScalarConverter::convert("+inf");
-	ScalarConverter::convert("nan");
-
+	if (argc > 1)
+		ScalarConverter::convert(argv[1]);
 	return 0;
 }

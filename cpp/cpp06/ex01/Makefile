@@ -1,11 +1,9 @@
-NAME = Conversion_of_scalar_types
+NAME = Serialization
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main\
-			ScalarConverter\
-			getLiteralType\
-			printLiteralType\
+
 
 OBJ_DIR = objects
 SRC_DIR = sources

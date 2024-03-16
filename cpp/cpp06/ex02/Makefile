@@ -1,10 +1,9 @@
-NAME = Serialization
+NAME = Identify_real_type
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main\
-			Data\
-			Serializer\
+			Base\
 
 
 OBJ_DIR = objects

@@ -79,7 +79,7 @@ void AForm::setTarget(const std::string newTarget)
 	target = newTarget;
 }
 
-const std::string AForm::getTarget() const
+std::string AForm::getTarget() const
 {
 	return target;
 }

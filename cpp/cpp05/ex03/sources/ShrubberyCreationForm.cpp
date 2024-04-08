@@ -34,7 +34,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (getIsSigned() == false)
 		throw AForm::FormNotSignedException();
 
-	std::ofstream outfile(getTarget());
+	std::ofstream outfile((getTarget() + "_shrubbery").c_str());
 
 	outfile << "          &&& &&  & &&\n"
 			   "      && &\\/&\\|& ()|/ @, &&\n"

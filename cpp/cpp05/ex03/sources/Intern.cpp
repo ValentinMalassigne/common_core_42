@@ -59,6 +59,6 @@ AForm *Intern::makeForm(const std::string formName, const std::string formTarget
 		}
 	}
 
-	std::cout << "Intern could not create " << formName << " reason : form does not exists.\n";
+	std::cerr << "Intern could not create " << formName << " reason : form does not exists.\n";
 	return res;
 }

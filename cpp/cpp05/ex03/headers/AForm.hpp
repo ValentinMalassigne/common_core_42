@@ -46,7 +46,7 @@ private:
 
 protected:
 	void setTarget(const std::string newTarget);
-	const std::string getTarget() const;
+	std::string getTarget() const;
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &AForm);

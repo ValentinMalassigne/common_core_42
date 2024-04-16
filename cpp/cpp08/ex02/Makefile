@@ -1,16 +1,15 @@
-NAME = Easy_find
+NAME = Span
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main\
+			Span
 
 OBJ_DIR = objects
 SRC_DIR = sources
-HPP_DIR = headers
 
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .cpp, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
-HPPS = $(addprefix $(HPP_DIR)/, $(addsuffix .hpp, $(SRC_FILES)))
 
 all: $(NAME)
 

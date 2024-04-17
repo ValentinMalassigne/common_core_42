@@ -19,5 +19,3 @@ private:
 	T *_array;
 	unsigned int _size;
 };
-
-#include "../templates/Array.tpp"

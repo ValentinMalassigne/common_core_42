@@ -1,5 +1,6 @@
 #include "../headers/Span.hpp"
 #include <iostream>
+#include <cstdlib>
 
 int main()
 {

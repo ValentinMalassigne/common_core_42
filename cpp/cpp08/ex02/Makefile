@@ -1,9 +1,8 @@
-NAME = Span
+NAME = Abomination_mutante
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC_FILES = main\
-			Span
+SRC_FILES = main
 
 OBJ_DIR = objects
 SRC_DIR = sources

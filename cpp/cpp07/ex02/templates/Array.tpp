@@ -7,7 +7,6 @@ Array<T>::Array() : _array(NULL), _size(0)
 template <typename T>
 Array<T>::Array(unsigned int n) : _array(new T[n]()), _size(n)
 {}
-//la parenthese permet de mettre a 0 tous les elements du tableau
 
 template <typename T>
 Array<T>::Array(const Array<T> &other): _array(new T[other._size]()), _size(other._size)

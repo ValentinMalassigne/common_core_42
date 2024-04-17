@@ -1,4 +1,6 @@
 #include "../headers/Span.hpp"
+#include <climits>
+#include <algorithm>
 
 Span::Span() : _N(0)
 {
@@ -47,7 +49,7 @@ unsigned int Span::shortestSpan()
 	std::vector<int> sorted = _numbers;
 	std::sort(sorted.begin(), sorted.end());
 	unsigned int shortest = UINT_MAX;
-	for (size_t i = 1; i < sorted.size(); i++)
+	for (std::size_t i = 1; i < sorted.size(); i++)
 	{
 		unsigned int span = sorted[i] - sorted[i - 1];
 		if (span < shortest)

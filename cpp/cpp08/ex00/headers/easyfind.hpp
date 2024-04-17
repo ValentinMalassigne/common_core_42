@@ -2,13 +2,19 @@
 
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
 template <typename T>
 int easyfind(T &container, int n)
 {
 	typename T::iterator it = std::find(container.begin(), container.end(), n);
 	if (it == container.end())
-		throw std::runtime_error(std::string("Element ") + std::to_string(n) + " not found");
+	{
+		std::ostringstream oss;
+		oss << n;
+    	std::string str = oss.str();
+		throw std::runtime_error(std::string("Element ") + str +" not found");
+	}
 	return *it;
 }
 
@@ -97,6 +103,10 @@ These containers do not support iterators in the traditional sense because they 
 to provide only restricted access to their elements (LIFO or FIFO). However, if you need to
 iterate over their elements, you would typically have to pop elements one by one until the
 container is empty.
+
+When you use certain container adapters like std::stack, std::queue, and std::priority_queue,
+they internally use other containers as their underlying data storage. These underlying
+containers provide the actual storage and operations for the adapter.
 
 6) std::stack: A container that provides LIFO (Last In First Out) access to elements.
 

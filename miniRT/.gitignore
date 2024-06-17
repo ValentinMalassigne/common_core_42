@@ -1,0 +1,13 @@
+# folders
+.vscode
+build
+
+# files
+*.swp
+*.a
+*.o
+*.out
+test*
+miniRT
+cachegrind*
+*.txt

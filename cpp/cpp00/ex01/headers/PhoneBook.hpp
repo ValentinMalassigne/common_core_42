@@ -9,11 +9,7 @@
 
 class PhoneBook {
 public:
-	PhoneBook() {
-		last_contact_index = -1;
-		for(int i = 0; i < BOOK_SIZE; i++)
-			contacts[i].phone_number = -1;
-	}
+	PhoneBook();
 
 	void save_contact(Contact new_contact);
 

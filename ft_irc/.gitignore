@@ -1,0 +1,12 @@
+#Compiled object
+*.o
+
+#Binaries
+ircserv
+*.out
+examples/micro_server
+
+#Misc
+./debug/
+./obj/
+.cache_exists

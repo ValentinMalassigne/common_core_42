@@ -44,10 +44,23 @@ static bool is_expression_valid(std::string expression)
 	return true;
 };
 
+long long stoll (std::string str)
+{
+	std::stringstream ss(str);
+	long long ll;
+	ss >> ll;
+
+	if (ll == std::numeric_limits<long long>::max()) {
+		// Handle overflow here
+		std::cout << "Overflow occurred!" << std::endl;
+	}
+	return ll;
+}
+
 long long RPN::solve_expression(std::string expression)
 {
 	if (!is_expression_valid(expression))
-		throw std::runtime_error("Invalid expression");
+		throw std::runtime_error("Error : Invalid expression");
 	std::stack<long long> stack;
 
 	size_t i = 0;
@@ -60,7 +73,7 @@ long long RPN::solve_expression(std::string expression)
 		}
 		if (std::isdigit(expression[i]))
 		{
-			stack.push(std::stoll(&expression[i]));
+			stack.push(stoll(&expression[i]));
 			i++;
 		}
 		else

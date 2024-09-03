@@ -36,6 +36,19 @@ bool BitcoinExchange::isDateInCorrectFormat(const std::string &date)
 	return true;
 }
 
+float stof(std::string str)
+{
+	std::stringstream ss(str);
+	float f;
+	ss >> f;
+
+	if (f == std::numeric_limits<float>::max()) {
+		// Handle overflow here
+		throw std::runtime_error("Float Overflow on : " + str);
+	}
+	return f;
+}
+
 bool BitcoinExchange::isRateInCorrectFormat(const std::string &rate)
 {
 	int minus_count = 0;
@@ -54,7 +67,7 @@ bool BitcoinExchange::isRateInCorrectFormat(const std::string &rate)
 	}
 	try
 	{
-		std::stof(rate);
+		stof(rate);
 	}
 	catch (const std::out_of_range &oor)
 	{
@@ -90,7 +103,7 @@ void BitcoinExchange::savePriceHistory(std::ifstream &price_history)
 			std::string rate_as_str = current_line.substr(delim + 1);
 			if (isDateInCorrectFormat(date) && isRateInCorrectFormat(rate_as_str))
 			{
-				float rate = std::stof(rate_as_str);
+				float rate = stof(rate_as_str);
 				priceHistory[date] = rate;
 			}
 		}
@@ -119,7 +132,7 @@ std::pair<std::string, float> BitcoinExchange::parse_input_line(std::string cons
 	if (!btc.isRateInCorrectFormat(quantity_as_str))
 		throw std::runtime_error("Error : Bad value format =>" + line + "\n");
 
-	float quantity = std::stof(quantity_as_str);
+	float quantity = stof(quantity_as_str);
 	if (quantity < 0)
 		throw std::runtime_error("Error : not a positive number.\n");
 	if (quantity > 1000)

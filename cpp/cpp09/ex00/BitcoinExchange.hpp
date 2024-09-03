@@ -4,6 +4,8 @@
 #include <map>
 #include <fstream>
 #include <iostream>
+#include <sstream>
+#include <limits>
 
 class BitcoinExchange
 {

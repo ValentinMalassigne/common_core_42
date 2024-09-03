@@ -2,6 +2,11 @@
 #include <iostream>
 
 #include <list>
+#include <vector>
+#include <ctime>
+#include <iostream>
+#include <limits>
+#include <sstream>
 
 class PmergeMe
 {

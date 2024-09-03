@@ -1,6 +1,10 @@
 #include <string>
 #include <stack>
 
+#include <iostream>
+#include <limits>
+#include <sstream>
+
 class RPN
 {
 private:

@@ -52,13 +52,13 @@ volumes:
     driver: local
     driver_opts:
       type: 'none'
-      device: '/Users/valentin/data/wordpress'
+      device: '/home/vmalassi/data/mariadb'
       o: 'bind'
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
-      device: '/Users/valentin/data/mariadb'
+      device: '/home/vmalassi/data/wordpress'
       o: 'bind'
 
 networks:

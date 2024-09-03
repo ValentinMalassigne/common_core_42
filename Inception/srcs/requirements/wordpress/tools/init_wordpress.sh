@@ -1,6 +1,6 @@
 # sleep 10
 
-while ! mariadb -h${DB_HOST} -u${WP_DB_USER} -p${WP_DB_PASS} ${WP_DB_NAME} &>/dev/null;
+while ! mariadb -h mariadb -u${SQL_USER} -p${SQL_PASSWORD} ${SQL_DATABASE} &>/dev/null;
 do
     sleep 3
 done

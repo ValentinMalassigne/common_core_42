@@ -1,65 +1,56 @@
 services:
-  mariadb:
-    image: mariadb
-    container_name: mariadb
-    networks:
-      - inception
-    build:
-      context: requirements/mariadb
-    env_file: .env
-    volumes:
-      - mariadb:/var/lib/mysql
-    restart: unless-stopped
-    expose:
-      - "3306"
+    nginx:
+        container_name: nginx
+        build:          ./requirements/nginx/
+        image:          nginx:inception
+        env_file:       .env
+        networks:
+            - inception
+        ports:
+            - "443:443"
+        restart:        on-failure
+        volumes:
+            - wordpress:/var/www/html/
+        depends_on:
+            - wordpress
+    mariadb:
+        container_name: mariadb
+        build:          ./requirements/mariadb/
+        image:          mariadb:inception
+        env_file:       .env
+        networks:
+            - inception
+        restart:        on-failure
+        volumes:
+            - mariadb:/var/lib/mysql/
+    wordpress:
+        container_name: wordpress
+        build:          ./requirements/wordpress/
+        image:          wordpress:inception
+        env_file:       .env
+        networks:
+            - inception
+        restart:        on-failure
+        volumes:
+            - wordpress:/var/www/html/
+        depends_on:
+            - mariadb
 
-  nginx:
-    image: nginx
-    container_name: nginx
-    volumes:
-      - wordpress:/var/www/wordpress
-    networks:
-      - inception
-    depends_on:
-      - wordpress
-    build:
-      context: requirements/nginx
-    env_file: .env
-    ports:
-      - "443:443"
-    restart: on-failure
-
-  wordpress:
-    image: wordpress
-    container_name: wordpress
-    env_file: .env
-    volumes:
-      - wordpress:/var/www/wordpress
-    networks:
-      - inception
-    build:
-      context: requirements/wordpress
-    depends_on:
-      - mariadb
-    restart: on-failure
-    expose:
-      - "9000"
+networks:
+    inception:
+        name:   inception
+        driver: bridge
 
 volumes:
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
-      device: '/home/vmalassi/data/mariadb'
       o: 'bind'
+      device: /home/vmalassi/data/mariadb
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
-      device: '/home/vmalassi/data/wordpress'
       o: 'bind'
-
-networks:
-  inception:
-    name: inception
-    driver: bridge
+      device: /home/vmalassi/data/wordpress

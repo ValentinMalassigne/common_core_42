@@ -1,29 +1,23 @@
-FROM debian:buster
+FROM	alpine:3.19
 
-RUN apt update -y
-RUN apt upgrade -y
+RUN		apk update && apk upgrade &&\
+		apk add php81 php81-fpm php81-mysqli \
+			php81-mbstring php81-phar &&\
+		apk add mariadb-client
+	
+RUN	ln -s /usr/bin/php81 /usr/bin/php
 
-RUN apt-get -y install wget
+# RUN		sed -i 's/listen = 127.0.0.1:9000/listen = 9000/g' /etc/php81/php-fpm.d/www.conf
+COPY	./conf/www.conf /etc/php81/php-fpm.d/www.conf
 
-RUN apt-get install -y php7.3\
-	php-fpm\
-	php-mysql\
-	mariadb-client
+RUN	apk add curl &&\
+	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&\
+	chmod +x wp-cli.phar &&\
+	mv wp-cli.phar /usr/bin/wp
 
-RUN wget https://fr.wordpress.org/wordpress-6.5.4-fr_FR.tar.gz -P /var/www
-RUN cd /var/www && tar -xzf wordpress-6.5.4-fr_FR.tar.gz && rm wordpress-6.5.4-fr_FR.tar.gz
+COPY	./tools/setup-wordpress.sh /tmp/setup-wordpress.sh
+RUN		chmod +x /tmp/setup-wordpress.sh
 
-RUN chown -R root:root /var/www/wordpress
+WORKDIR /var/www/html/wordpress
 
-COPY ./conf/php.conf /etc/php/7.3/fpm/pool.d/www.conf
-
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
-
-COPY ./tools/init_wordpress.sh /init_wordpress.sh
-
-ENTRYPOINT [ "bash", "init_wordpress.sh" ]
-
-EXPOSE 9000
+ENTRYPOINT	[ "sh", "/tmp/setup-wordpress.sh" ]

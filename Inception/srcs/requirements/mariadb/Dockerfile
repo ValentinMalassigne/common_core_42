@@ -1,11 +1,13 @@
-FROM debian:buster
+FROM	alpine:3.19
 
-RUN apt update -y
-RUN apt upgrade -y
+RUN	apk update && apk upgrade &&\
+	apk add mariadb mariadb-client
+	
+COPY	./tools/setup_mariadb.sh /tmp/setup_mariadb.sh
+RUN	chmod +x /tmp/setup_mariadb.sh
 
-RUN apt-get install mariadb-client -y
+COPY ./conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
-COPY	./conf/configure-mariadb.sh /tmp/configure-mariadb.sh
-RUN	chmod +x /tmp/configure-mariadb.sh
+EXPOSE 3306
 
-ENTRYPOINT	[ "bash", "/tmp/configure-mariadb.sh" ]
+ENTRYPOINT	[ "sh", "/tmp/setup_mariadb.sh" ]

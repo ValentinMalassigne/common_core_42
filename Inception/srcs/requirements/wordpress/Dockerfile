@@ -7,7 +7,6 @@ RUN		apk update && apk upgrade &&\
 	
 RUN	ln -s /usr/bin/php81 /usr/bin/php
 
-# RUN		sed -i 's/listen = 127.0.0.1:9000/listen = 9000/g' /etc/php81/php-fpm.d/www.conf
 COPY	./conf/www.conf /etc/php81/php-fpm.d/www.conf
 
 RUN	apk add curl &&\
